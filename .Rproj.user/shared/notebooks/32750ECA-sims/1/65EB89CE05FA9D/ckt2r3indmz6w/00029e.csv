@@ -1,0 +1,185 @@
+"1","[1]"
+"1"," 210000"
+"1","      4"
+"1","
+"
+"1","[1]"
+"1"," ""Computing A"""
+"1","
+"
+"1","[1]"
+"1"," ""Computing N"""
+"1","
+"
+"1","[1]"
+"1"," 210000"
+"1","      4"
+"1","
+"
+"1","[1]"
+"1"," ""Computing C"""
+"1","
+"
+"1","[1]"
+"1"," ""Done computing big likelihoods"""
+"1","
+"
+"1","[1]"
+"1"," ""fast"""
+"1","
+"
+"1","[1]"
+"1"," 1"
+"1","
+"
+"1","[1]"
+"1"," 2"
+"1","
+"
+"1","[1]"
+"1"," 8.058142e-06"
+"1","
+"
+"1","[1]"
+"1"," 1000"
+"1","    1"
+"1","
+"
+"1","[1]"
+"1"," 1000"
+"1","
+"
+"1","[1]"
+"1"," 0.02154974"
+"1","
+"
+"1","[1]"
+"1"," 0.0193845"
+"1","
+"
+"1","  A=0.395 "
+"1","  A=0.395 "
+"1","  A=0.395 "
+"1","
+"
+"1","0.3299116 "
+"1","0.2876741 "
+"1","0.3721491 "
+"1","
+"
+"1","outcome
+"
+"1"," 0 "
+"1"," 1 "
+"1","
+"
+"1"," 2 "
+"1","53 "
+"1","
+"
+"1","[1]"
+"1"," 56"
+"1","
+"
+"2","...automatically assigning order attribute to some nodes...
+"
+"2","node W1, order:1
+"
+"2","node W2, order:2
+"
+"2","node A, order:3
+"
+"2","node J_1, order:4
+"
+"2","node Nt_1, order:5
+"
+"2","node Ct_1, order:6
+"
+"2","node J_2, order:7
+"
+"2","node Nt_2, order:8
+"
+"2","node Ct_2, order:9
+"
+"2","node J_3, order:10
+"
+"2","node Nt_3, order:11
+"
+"2","node Ct_3, order:12
+"
+"2","node J_4, order:13
+"
+"2","node Nt_4, order:14
+"
+"2","node Ct_4, order:15
+"
+"2","node J_5, order:16
+"
+"2","node Nt_5, order:17
+"
+"2","node Ct_5, order:18
+"
+"2","node J_6, order:19
+"
+"2","node Nt_6, order:20
+"
+"2","node Ct_6, order:21
+"
+"2","node J_7, order:22
+"
+"2","node Nt_7, order:23
+"
+"2","node Ct_7, order:24
+"
+"2","node J_8, order:25
+"
+"2","node Nt_8, order:26
+"
+"2","node Ct_8, order:27
+"
+"2","node J_9, order:28
+"
+"2","node Nt_9, order:29
+"
+"2","node Ct_9, order:30
+"
+"2","node J_10, order:31
+"
+"2","node Nt_10, order:32
+"
+"2","node Ct_10, order:33
+"
+"2","node J_11, order:34
+"
+"2","node Nt_11, order:35
+"
+"2","node Ct_11, order:36
+"
+"2","node J_12, order:37
+"
+"2","node Nt_12, order:38
+"
+"2","node Ct_12, order:39
+"
+"2","node J_13, order:40
+"
+"2","node Nt_13, order:41
+"
+"2","node Ct_13, order:42
+"
+"2","node J_14, order:43
+"
+"2","node Nt_14, order:44
+"
+"2","node Ct_14, order:45
+"
+"2","node J_15, order:46
+"
+"2","node Nt_15, order:47
+"
+"2","node Ct_15, order:48
+"
+"1","[1]"
+"1"," ""Processing data..."""
+"1","
+"

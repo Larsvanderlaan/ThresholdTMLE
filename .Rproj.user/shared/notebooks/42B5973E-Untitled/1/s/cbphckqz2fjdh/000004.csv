@@ -1,0 +1,25 @@
+"0"," devtools::load_all()"
+"2","Loading ThresholdTMLE
+"
+"2","sl3 1.4.3
+"
+"2","Please note the package is under active development.
+Check often for updates and report bugs at https://github.com/tlverse/sl3. 
+
+"
+"2","Loading required package: nnls
+"
+"2","Super Learner
+"
+"2","Version: 2.0-26
+"
+"2","Package created on 2019-10-27
+
+"
+"2","data.table 1.14.0 using 1 threads (see ?getDTthreads).  Latest news: r-datatable.com
+"
+"2","**********
+This installation of data.table has not detected OpenMP support. It should still work but in single-threaded mode.
+This is a Mac. Please read https://mac.r-project.org/openmp/. Please engage with Apple and ask them for support. Check r-datatable.com for updates, and our Mac instructions here: https://github.com/Rdatatable/data.table/wiki/Installation. After several years of many reports of installation problems on Mac, it's time to gingerly point out that there have been no similar problems on Windows or Linux.
+**********
+"

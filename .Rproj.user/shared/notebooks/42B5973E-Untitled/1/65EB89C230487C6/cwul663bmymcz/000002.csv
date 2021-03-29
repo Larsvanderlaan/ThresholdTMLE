@@ -1,0 +1,23 @@
+"0","library(origami)"
+"2","origami v1.0.3: Generalized Framework for Cross-Validation
+"
+"0","library(data.table)"
+"0","library(sl3)"
+"0","library(simcausal)"
+"2","simcausal
+"
+"2","Version: 0.5.5
+"
+"2","Package created on 
+
+"
+"2","Please note this package is still in its early stages of development. Check for updates and report bugs at http://github.com/osofr/simcausal.
+
+"
+"2","To see the vignette use vignette(""simcausal_vignette"", package=""simcausal""). To see all available package documentation use help(package = ""simcausal"") and ?simcausal.
+
+"
+"2","To see the latest updates for this version, use news(package = ""simcausal"").
+
+"
+"0","library(uuid)"

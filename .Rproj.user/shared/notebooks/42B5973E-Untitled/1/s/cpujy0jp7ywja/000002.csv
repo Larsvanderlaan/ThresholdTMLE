@@ -1,0 +1,73 @@
+"0"," data <- as.data.table(simulate(5000))"
+"2","simcausal
+"
+"2","Version: 0.5.5
+"
+"2","Package created on 
+
+"
+"2","Please note this package is still in its early stages of development. Check for updates and report bugs at http://github.com/osofr/simcausal.
+
+"
+"2","To see the vignette use vignette(""simcausal_vignette"", package=""simcausal""). To see all available package documentation use help(package = ""simcausal"") and ?simcausal.
+
+"
+"2","To see the latest updates for this version, use news(package = ""simcausal"").
+
+"
+"2","...automatically assigning order attribute to some nodes...
+"
+"2","node W1, order:1
+"
+"2","node W2, order:2
+"
+"2","node A, order:3
+"
+"2","node Tt, order:4
+"
+"2","node T, order:5
+"
+"2","node J, order:6
+"
+"2","node Ct, order:7
+"
+"2","node C, order:8
+"
+"2","node Delta, order:9
+"
+"2","node Ttilde, order:10
+"
+"1","do(Tt)
+"
+"1","do(Ct)
+"
+"1","as.numeric(T <= C)
+"
+"1","min(cbind_mod(T, C))
+"
+"2","simulating observed dataset from the DAG object
+"
+"1","do(Tt)
+"
+"1","do(Ct)
+"
+"1","as.numeric(T <= C)
+"
+"1","min(cbind_mod(T, C))
+"
+"0","library(data.table)"
+"0","library(sl3)"
+"0","target_times <- c(12)"
+"0","cutoffs_J <- signif(quantile(data$J, c(  0.5, 0.7 )),3)"
+"0","cutoffs_A <- signif(quantile(data$A, c(0.1, 0.3, 0.5, 0.7, 0.9)),3)"
+"0"," "
+"0","node_list <- list(W = c(""W1"",""W2""), A = ""A"", ""J"" = ""J"", weights = ""weights"")"
+"0","output <- survivalThresh(data, covariates = node_list$W, cutoffs_A = cutoffs_A, cutoffs_J = cutoffs_J, target_times = target_times, ngrid_A = 25, lrnr = Lrnr_xgboost$new(max_depth = 3), max_eps =1e-2)"
+"1","[1]"
+"1"," ""Processing data..."""
+"1","
+"
+"1","[1]"
+"1"," ""Fitting likelihood..."""
+"1","
+"

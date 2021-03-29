@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1616025796666.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "9FC3785A",
+    "lastKnownWriteTime" : 1616170141,
+    "last_content_update" : 1616170141496,
+    "path" : "~/ThresholdTMLE/R/fitting_likelihood.R",
+    "project_path" : "R/fitting_likelihood.R",
+    "properties" : {
+        "cursorPosition" : "65,20",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

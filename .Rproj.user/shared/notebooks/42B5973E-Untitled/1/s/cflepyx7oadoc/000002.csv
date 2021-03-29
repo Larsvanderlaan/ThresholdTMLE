@@ -1,0 +1,1511 @@
+"0","#remotes::install_github(""tlverse/hal9001"", ref = ""master"")"
+"0","remotes::install_github(""Larsvanderlaan/hal9001"", ref = ""DenseSparseMatrix"")"
+"2","Using github PAT from envvar GITHUB_PAT
+"
+"2","Downloading GitHub repo Larsvanderlaan/hal9001@DenseSparseMatrix
+"
+"1","These packages have more recent versions available.
+It is recommended to update all of them.
+Which would you like to update?"
+"1",""
+"1","
+"
+"1",""
+"1","
+"
+"1","1: All                                 "
+"1","
+"
+"1","2: CRAN packages only                  "
+"1","
+"
+"1","3: None                                "
+"1","
+"
+"1","4: parallelly (1.23.0 -> 1.24.0) [CRAN]"
+"1","
+"
+"1",""
+"1","
+"
+"0","3"
+"1","  "
+"1","   checking for file ‘/private/var/folders/69/8ppp5fzj0lx5zbhs_gxcz1680000gn/T/RtmpSP8ABl/remotes5968533b891b/Larsvanderlaan-hal9001-f41f4f2/DESCRIPTION’ ..."
+"1",""
+"1",""
+"1","  "
+"1","[32m✓[39m  [38;5;247mchecking for file ‘/private/var/folders/69/8ppp5fzj0lx5zbhs_gxcz1680000gn/T/RtmpSP8ABl/remotes5968533b891b/Larsvanderlaan-hal9001-f41f4f2/DESCRIPTION’[39m[36m[39m"
+"1",""
+"1","
+"
+"1",""
+"1",""
+"1",""
+"1","  "
+"1","[38;5;247m─[39m[38;5;247m  [39m[38;5;247mpreparing ‘hal9001’:[39m[36m[39m"
+"1",""
+"1","
+"
+"1",""
+"1",""
+"1",""
+"1","  "
+"1","   checking DESCRIPTION meta-information ..."
+"1",""
+"1",""
+"1","  "
+"1","[32m✓[39m  [38;5;247mchecking DESCRIPTION meta-information[39m[36m[39m"
+"1",""
+"1","
+"
+"1",""
+"1",""
+"1",""
+"1","  "
+"1","[38;5;247m─[39m[38;5;247m  [39m[38;5;247mcleaning src[39m[36m[39m"
+"1",""
+"1","
+"
+"1",""
+"1",""
+"1",""
+"1","  "
+"1","[38;5;247m─[39m[38;5;247m  [39m[38;5;247mchecking for LF line-endings in source and make files and shell scripts[39m[36m[39m"
+"1",""
+"1","
+"
+"1",""
+"1",""
+"1",""
+"1","  "
+"1","[38;5;247m─[39m[38;5;247m  [39m[38;5;247mchecking for empty or unneeded directories[39m[36m[39m"
+"1",""
+"1","
+"
+"1",""
+"1",""
+"1",""
+"1","  "
+"1","[38;5;247m─[39m[38;5;247m  [39m[38;5;247mbuilding ‘hal9001_0.3.0.tar.gz’[39m[36m[39m"
+"1",""
+"1","
+"
+"1",""
+"1",""
+"1",""
+"1","  "
+"1","   "
+"1",""
+"1","
+"
+"1",""
+"1",""
+"1",""
+"2","* installing *source* package ‘hal9001’ ...
+"
+"2","** using staged installation
+"
+"2","** libs
+"
+"1","clang++ -mmacosx-version-min=10.13 -std=gnu++11 -I""/Library/Frameworks/R.framework/Resources/include"" -DNDEBUG  -I'/Library/Frameworks/R.framework/Versions/4.0/Resources/library/Rcpp/include' -I'/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include' -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
+"
+"2","In file included from RcppExports.cpp:4:
+In file included from ./hal9001_types.h:4:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:"
+"2","30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:1:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Core:540:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                      "
+"2","       ^
+"
+"2","In file included from RcppExports.cpp:4:
+In file included from ./hal9001_types.h:4:
+In file included from "
+"2","/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/LU:47:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/"
+"2","library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from RcppExports.cpp:4:
+In file included from ./hal9001_types.h:4:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:3:
+In file included from /Library/Frameworks/R.framework/Versions/4."
+"2","0/Resources/library/RcppEigen/include/Eigen/Cholesky:12:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Jacobi:29:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from RcppExports.cpp:4:
+In file included from ./hal9001_types.h:4:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:3:
+In file included from /Library/Frameworks/R.framework/Versions/4."
+"2","0/Resources/library/RcppEigen/include/Eigen/Cholesky:43:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from RcppExports.cpp:4:
+In file included from ./hal9001_types.h:4:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:4:
+In file included from /Library/Frameworks/R.framework/Versions/4."
+"2","0/Resources/library/RcppEigen/include/Eigen/QR:15:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Householder:27:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from RcppExports.cpp:4:
+In file included from ./hal9001_types.h:4:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:4:
+In file included from /Library/Frameworks/R.framework/Versions/4."
+"2","0/Resources/library/RcppEigen/include/Eigen/QR:48:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from RcppExports.cpp:4:
+In file included from ./hal9001_types.h:4:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:5:
+In file included from /Library/Frameworks/R.framework/Versions/4."
+"2","0/Resources/library/RcppEigen/include/Eigen/SVD:48:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from RcppExports.cpp:4:
+In file included from ./hal9001_types.h:4:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h"
+"2",":25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:6:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Geometry:58:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning:"
+"2"," pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from RcppExports.cpp:4:
+In file included from ./hal9001_types.h:4:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:7:
+In file included from /Library/Frameworks/R.framework/Versions/4."
+"2","0/Resources/library/RcppEigen/include/Eigen/Eigenvalues:58:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from RcppExports.cpp:4:
+In file included from ./hal9001_types.h:4:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:26:
+In file included from /Library/Frameworks/R.framework/Versions/"
+"2","4.0/Resources/library/RcppEigen/include/Eigen/SparseCore:66:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from RcppExports.cpp:4:
+In file included from ./hal9001_types.h:4:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:27:
+In file included from /Library/Frameworks/R.framework/Versions/"
+"2","4.0/Resources/library/RcppEigen/include/Eigen/OrderingMethods:71:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from RcppExports.cpp:4:
+In file included from ./hal9001_types.h:4:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:29:
+In file included from /Library/Frameworks/R.framework/Versions/"
+"2","4.0/Resources/library/RcppEigen/include/Eigen/SparseCholesky:43:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from RcppExports.cpp:4:
+In file included from ./hal9001_types.h:4:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse"
+"2",":32:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/SparseQR:34:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from RcppExports.cpp:4:
+In file included from ./hal9001_types.h:4"
+"2",":
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:33:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/IterativeLinearSolvers:46:
+/Library/"
+"2","Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from RcppExports.cpp:4:
+In file included from ./hal9001_types.h:4:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h"
+"2",":32:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/CholmodSupport:45:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from RcppExports.cpp:4:
+In file included from ./hal9001_types.h:4:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:35:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/Eigen/KroneckerProduct:34:
+/Library/Frameworks/R.framework/Versions/"
+"2","4.0/Resources/library/RcppEigen/include/unsupported/Eigen/../../Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from RcppExports.cpp:4:
+In file included from ./hal9001_types.h:4:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:39"
+"2",":
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/Eigen/Polynomials:135:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/Eigen/../../Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from RcppExports.cpp:4:
+In file included from ./hal9001_types.h:4:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:40:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/Eigen/SparseExtra:51:
+/Library/Frameworks/R.framework/Versions/4.0/R"
+"2","esources/library/RcppEigen/include/unsupported/Eigen/../../Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from RcppExports.cpp:4:
+In file included from ./hal9001_types.h:4:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:26:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/Rcpp/include/Rcpp.h:57:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/Rcpp/include/Rcpp/DataFrame.h:136:18: warning: unused variable 'data' [-Wunused-variable]
+            SEXP data = Parent::get__();
+      "
+"2","           ^
+"
+"2","19 warnings generated.
+"
+"1","clang++ -mmacosx-version-min=10.13 -std=gnu++11 -I""/Library/Frameworks/R.framework/Resources/include"" -DNDEBUG  -I'/Library/Frameworks/R.framework/Versions/4.0/Resources/library/Rcpp/include' -I'/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include' -I/usr/local/include   -fPIC  -Wall -g -O2  -c dedupe.cpp -o dedupe.o
+"
+"2","In file included from dedupe.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:1:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Core"
+"2",":540:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from dedupe.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/LU:4"
+"2","7:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from dedupe.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h"
+"2",":30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:3:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Cholesky:12:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Jacobi:29:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragm"
+"2","a diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from dedupe.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from "
+"2","/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:3:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Cholesky:43:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop coul"
+"2","d not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from dedupe.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25"
+"2",":
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:4:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/QR:15:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Householder:27:
+/Library/Frameworks/R.fra"
+"2","mework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from dedupe.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:4:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/QR:4"
+"2","8:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from dedupe.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:5:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/SVD:"
+"2","48:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from dedupe.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:6:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Geom"
+"2","etry:58:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from dedupe.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:7:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Eige"
+"2","nvalues:58:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from dedupe.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:26:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sp"
+"2","arseCore:66:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from dedupe.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:27:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Or"
+"2","deringMethods:71:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from dedupe.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:29:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sp"
+"2","arseCholesky:43:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from dedupe.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:32:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sp"
+"2","arseQR:34:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from dedupe.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:33:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/It"
+"2","erativeLinearSolvers:46:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from dedupe.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:32:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/CholmodSupport:45:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/Re"
+"2","enableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from dedupe.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:35:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/Eigen/KroneckerProduct:34:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsuppor"
+"2","ted/Eigen/../../Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from dedupe.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:39:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/Eigen/Polynomials:135:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/"
+"2","Eigen/../../Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from dedupe.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:40:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/Eigen/SparseExtra:51:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/E"
+"2","igen/../../Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from dedupe.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:26:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/Rcpp/include/Rcpp.h:"
+"2","57:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/Rcpp/include/Rcpp/DataFrame.h:136:18: warning: unused variable 'data' [-Wunused-variable]
+            SEXP data = Parent::get__();
+                 ^
+"
+"2","19 warnings generated.
+"
+"1","clang++ -mmacosx-version-min=10.13 -std=gnu++11 -I""/Library/Frameworks/R.framework/Resources/include"" -DNDEBUG  -I'/Library/Frameworks/R.framework/Versions/4.0/Resources/library/Rcpp/include' -I'/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include' -I/usr/local/include   -fPIC  -Wall -g -O2  -c irls_lassi.cpp -o irls_lassi.o
+"
+"2","In file included from irls_lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:1:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/"
+"2","Core:540:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from irls_lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/"
+"2","LU:47:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from irls_lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:3:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/"
+"2","Cholesky:12:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Jacobi:29:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from irls_lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:3:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/"
+"2","Cholesky:43:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from irls_lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:4:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/"
+"2","QR:15:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Householder:27:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from irls_lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:4:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/"
+"2","QR:48:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from irls_lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:5:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/"
+"2","SVD:48:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from irls_lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h"
+"2",":30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:6:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Geometry:58:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                  "
+"2","           ^
+"
+"2","In file included from irls_lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:7:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/"
+"2","Eigenvalues:58:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from irls_lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:26:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eige"
+"2","n/SparseCore:66:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from irls_lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:27:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eige"
+"2","n/OrderingMethods:71:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from irls_lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:29:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eige"
+"2","n/SparseCholesky:43:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from irls_lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:32:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eige"
+"2","n/SparseQR:34:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from irls_lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:33:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eige"
+"2","n/IterativeLinearSolvers:46:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from irls_lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:32:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/CholmodSupport:45:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/uti"
+"2","l/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from irls_lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:35:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/Eigen/KroneckerProduct:34:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsu"
+"2","pported/Eigen/../../Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from irls_lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from "
+"2","/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:39:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/Eigen/Polynomials:135:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/Eigen/../../Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic p"
+"2","op
+                             ^
+"
+"2","In file included from irls_lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:40:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/Eigen/SparseExtra:51:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupport"
+"2","ed/Eigen/../../Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from irls_lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:26:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/Rcpp/include/Rcpp.h:57:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/Rcpp/include/Rcpp/DataFrame.h:136:18: warning: unused variable 'data' [-Wunused-variable]
+            SEXP data = Parent::get__();
+                 ^
+"
+"2","19 warnings generated.
+"
+"1","clang++ -mmacosx-version-min=10.13 -std=gnu++11 -I""/Library/Frameworks/R.framework/Resources/include"" -DNDEBUG  -I'/Library/Frameworks/R.framework/Versions/4.0/Resources/library/Rcpp/include' -I'/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include' -I/usr/local/include   -fPIC  -Wall -g -O2  -c lassi.cpp -o lassi.o
+"
+"2","In file included from lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:1:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Core:"
+"2","540:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:2:
+"
+"2","In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/LU:47:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:3:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Chole"
+"2","sky:12:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Jacobi:29:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from "
+"2","/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:3:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Cholesky:43:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop coul"
+"2","d not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:"
+"2","25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:4:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/QR:15:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Householder:27:
+/Library/Frameworks/R.f"
+"2","ramework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:4:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/QR:48"
+"2",":
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:5:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/SVD:4"
+"2","8:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:6:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Geome"
+"2","try:58:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30"
+"2",":
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:7:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Eigenvalues:58:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                  "
+"2","           ^
+"
+"2","In file included from lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:26:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Spa"
+"2","rseCore:66:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:27:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Ord"
+"2","eringMethods:71:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:29:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Spa"
+"2","rseCholesky:43:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:"
+"2","32:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/SparseQR:34:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:33:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Ite"
+"2","rativeLinearSolvers:46:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from "
+"2","/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:32:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/CholmodSupport:45:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:35:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/Eigen/KroneckerProduct:34:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupport"
+"2","ed/Eigen/../../Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:39:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/Eigen/Polynomials:135:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/E"
+"2","igen/../../Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:40:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/Eigen/SparseExtra:51:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/Ei"
+"2","gen/../../Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from lassi.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:26:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/Rcpp/include/Rcpp.h:57:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/Rcpp/include/Rcpp/DataFrame.h:136:18: warning: unused variable 'data' [-Wunused-variable]
+            SEXP data = Parent::get__();
+                 ^
+"
+"2","19 warnings generated.
+"
+"1","clang++ -mmacosx-version-min=10.13 -std=gnu++11 -I""/Library/Frameworks/R.framework/Resources/include"" -DNDEBUG  -I'/Library/Frameworks/R.framework/Versions/4.0/Resources/library/Rcpp/include' -I'/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include' -I/usr/local/include   -fPIC  -Wall -g -O2  -c lassi_fit.cpp -o lassi_fit.o
+"
+"2","In file included from lassi_fit.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:1:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/C"
+"2","ore:540:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from lassi_fit.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:"
+"2","30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/LU:47:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                         "
+"2","    ^
+"
+"2","In file included from lassi_fit.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+"
+"2","In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:3:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Cholesky:12:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Jacobi:29:
+/Library/Frameworks/R.fram"
+"2","ework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from lassi_fit.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:3:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/C"
+"2","holesky:43:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from lassi_fit.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:4:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Q"
+"2","R:15:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Householder:27:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from lassi_fit.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:4:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Q"
+"2","R:48:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from lassi_fit.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:5:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/S"
+"2","VD:48:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from lassi_fit.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:6:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/G"
+"2","eometry:58:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from lassi_fit.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:7:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/E"
+"2","igenvalues:58:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from lassi_fit.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:"
+"2","31:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:26:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/SparseCore:66:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+               "
+"2","              ^
+"
+"2","In file included from lassi_fit.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:27:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen"
+"2","/OrderingMethods:71:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from lassi_fit.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:29:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen"
+"2","/SparseCholesky:43:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from lassi_fit.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:32:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen"
+"2","/SparseQR:34:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from lassi_fit.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:33:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen"
+"2","/IterativeLinearSolvers:46:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from lassi_fit.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:32:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/CholmodSupport:45:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util"
+"2","/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from lassi_fit.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:35:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/Eigen/KroneckerProduct:34:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsup"
+"2","ported/Eigen/../../Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from lassi_fit.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:39"
+"2",":
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/Eigen/Polynomials:135:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/Eigen/../../Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from lassi_fit.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:40:
+In file included from "
+"2","/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/Eigen/SparseExtra:51:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/Eigen/../../Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from lassi_fit.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:26:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/Rcpp/include/Rcpp.h:57:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/Rcpp/include/Rcpp/DataFrame.h:136:18: warning: unused variable 'data' [-Wunused-variable]
+            SEXP data = Parent::get__();
+                 ^"
+"2","
+"
+"2","19 warnings generated.
+"
+"1","clang++ -mmacosx-version-min=10.13 -std=gnu++11 -I""/Library/Frameworks/R.framework/Resources/include"" -DNDEBUG  -I'/Library/Frameworks/R.framework/Versions/4.0/Resources/library/Rcpp/include' -I'/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include' -I/usr/local/include   -fPIC  -Wall -g -O2  -c make_hal_basis.cpp -o make_hal_basis.o
+"
+"2","In file included from make_hal_basis.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:1:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Ei"
+"2","gen/Core:540:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from make_hal_basis.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Ei"
+"2","gen/LU:47:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from make_hal_basis.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:3:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Ei"
+"2","gen/Cholesky:12:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Jacobi:29:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from make_hal_basis.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:3:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Ei"
+"2","gen/Cholesky:43:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from make_hal_basis.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:4:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Ei"
+"2","gen/QR:15:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Householder:27:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from make_hal_basis.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:4:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Ei"
+"2","gen/QR:48:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from make_hal_basis.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:5:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Ei"
+"2","gen/SVD:48:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from make_hal_basis.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:6:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Ei"
+"2","gen/Geometry:58:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from make_hal_basis.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:7:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Ei"
+"2","gen/Eigenvalues:58:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from make_hal_basis.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31:
+"
+"2","In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:26:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/SparseCore:66:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                   "
+"2","          ^
+"
+"2","In file included from make_hal_basis.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:27:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/"
+"2","Eigen/OrderingMethods:71:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from make_hal_basis.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:29:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/"
+"2","Eigen/SparseCholesky:43:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from make_hal_basis.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31"
+"2",":
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:32:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/SparseQR:34:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                   "
+"2","          ^
+"
+"2","In file included from make_hal_basis.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:33:
+"
+"2","In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/IterativeLinearSolvers:46:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from make_hal_basis.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:32:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/CholmodSupport:45:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core"
+"2","/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from make_hal_basis.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:35"
+"2",":
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/Eigen/KroneckerProduct:34:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/Eigen/../../Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from make_hal_basis.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:39:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/Eigen/Polynomials:"
+"2","135:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/Eigen/../../Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from make_hal_basis.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:40:
+"
+"2","In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/Eigen/SparseExtra:51:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/Eigen/../../Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from make_hal_basis.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:26:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/Rcpp/include/Rcpp.h:"
+"2","57:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/Rcpp/include/Rcpp/DataFrame.h:136:18: warning: unused variable 'data' [-Wunused-variable]
+            SEXP data = Parent::get__();
+                 ^
+"
+"2","19 warnings generated.
+"
+"1","clang++ -mmacosx-version-min=10.13 -std=gnu++11 -I""/Library/Frameworks/R.framework/Resources/include"" -DNDEBUG  -I'/Library/Frameworks/R.framework/Versions/4.0/Resources/library/Rcpp/include' -I'/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include' -I/usr/local/include   -fPIC  -Wall -g -O2  -c utils.cpp -o utils.o
+"
+"2","In file included from utils.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:1:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Core:"
+"2","540:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from utils.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/LU:47"
+"2",":
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from utils.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:3:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Chole"
+"2","sky:12:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Jacobi:29:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from utils.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h"
+"2",":30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:3:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Cholesky:43:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                  "
+"2","           ^
+"
+"2","In file included from utils.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:4:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/QR:15"
+"2",":
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Householder:27:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from utils.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:4:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/QR:48"
+"2",":
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from utils.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:5:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/SVD:4"
+"2","8:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from utils.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:6:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Geome"
+"2","try:58:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from utils.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:30:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:7:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Eigen"
+"2","values:58:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from utils.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:26:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Spa"
+"2","rseCore:66:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from utils.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:27:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Ord"
+"2","eringMethods:71:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from utils.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:29:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Spa"
+"2","rseCholesky:43:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from utils.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:32:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Spa"
+"2","rseQR:34:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from utils.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:31:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Sparse:33:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Ite"
+"2","rativeLinearSolvers:46:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from utils.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:32:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/CholmodSupport:45:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/Ree"
+"2","nableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from utils.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:35:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/Eigen/KroneckerProduct:34:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupport"
+"2","ed/Eigen/../../Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from utils.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:39:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/Eigen/Polynomials:135:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/E"
+"2","igen/../../Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from utils.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:25:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigenForward.h:40:
+"
+"2","In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/Eigen/SparseExtra:51:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported/Eigen/../../Eigen/src/Core/util/ReenableStupidWarnings.h:14:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+"
+"2","In file included from utils.cpp:2:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/RcppEigen.h:26:
+In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/Rcpp/include/Rcpp.h:57:
+/Library/Frameworks/R.framework/Versions/4.0/Resources/library/Rcpp/include/Rcpp/DataFrame.h:136:18: warning: unused variable 'data' [-Wunused-variable]
+            SEXP data = Parent::get__();
+                 ^
+"
+"2","19 warnings generated.
+"
+"1","clang++ -mmacosx-version-min=10.13 -std=gnu++11 -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o hal9001.so RcppExports.o dedupe.o irls_lassi.o lassi.o lassi_fit.o make_hal_basis.o utils.o -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
+"
+"2","installing to /Library/Frameworks/R.framework/Versions/4.0/Resources/library/00LOCK-hal9001/00new/hal9001/libs
+"
+"2","** R
+"
+"2","** data
+"
+"2","*** moving datasets to lazyload DB
+"
+"2","** inst
+"
+"2","** byte-compile and prepare package for lazy loading
+"
+"2","** help
+"
+"2","*** installing help indices
+"
+"2","** building package indices
+"
+"2","** installing vignettes
+"
+"2","** testing if installed package can be loaded from temporary location
+"
+"2","** checking absolute paths in shared objects and dynamic libraries
+"
+"2","** testing if installed package can be loaded from final location
+"
+"2","** testing if installed package keeps a record of temporary installation path
+"
+"2","* DONE (hal9001)
+"
+"0","remotes::install_github(""tlverse/sl3"", ref = ""Larsvanderlaan-pooled_hazard_task_bug"")"
+"2","Using github PAT from envvar GITHUB_PAT
+"
+"2","Skipping install of 'sl3' from a github remote, the SHA1 (b6cd084a) has not changed since last install.
+  Use `force = TRUE` to force installation
+"

@@ -1,0 +1,6 @@
+"0","# "
+"0","# "
+"0","# data.table(colMeans(t(apply(matrix(survs$St, ncol = 15) * matrix(output1$likelihoods[[1]]$N, ncol = 15) ,1, cumsum))))"
+"0","# "
+"0","# data.table(matrix(survs$Ft, ncol = 15))"
+"0","#as.data.table(matrix(output1$likelihoods$`J=0.122`$J[[1]], ncol = 15))"

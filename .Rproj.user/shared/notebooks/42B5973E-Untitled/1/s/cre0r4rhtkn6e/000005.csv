@@ -1,0 +1,3 @@
+"0","lrnr <- Lrnr_hal9001$new(max_degree = 1, num_knots = c(15), smoothness_orders = 1, squash = FALSE)"
+"0","lrnr <- lrnr$train(task_Jt)"
+"1",""

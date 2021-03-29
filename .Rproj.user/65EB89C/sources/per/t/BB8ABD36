@@ -1,0 +1,27 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1616178232614.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "240958014",
+    "id" : "BB8ABD36",
+    "lastKnownWriteTime" : 1616291047,
+    "last_content_update" : 1616470036535,
+    "path" : "~/ThresholdTMLE/sims.Rmd",
+    "project_path" : "sims.Rmd",
+    "properties" : {
+        "cursorPosition" : "45,3",
+        "last_setup_crc32" : "",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

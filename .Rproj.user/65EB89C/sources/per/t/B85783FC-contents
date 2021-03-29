@@ -1,0 +1,189 @@
+---
+title: "test"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, include = F}
+#remotes::install_github("tlverse/hal9001", ref = "master")
+remotes::install_github("Larsvanderlaan/hal9001", ref = "DenseSparseMatrix")
+remotes::install_github("tlverse/sl3", ref = "Larsvanderlaan-pooled_hazard_task_bug")
+```
+
+
+```{r}
+data <- as.data.table(simulate(1000, censoring = TRUE))
+processed <- process_data(data, node_list, covariates = c("W1", "W2"))
+data <- processed$data
+node_list <- processed$node_list
+
+data <- shape_long(data, node_list)
+nt <- max(data$t)
+n <- nrow(data)/nt
+
+folds_n <-  origami::make_folds(
+    n = n,
+    V = 10
+  )
+
+folds_nt <-origami::id_folds_to_folds(folds_n, data$id)
+task_Jt <- make_task_N(data, node_list = node_list, folds = folds_nt, train = T)
+lrnr <- Lrnr_hal9001$new(max_degree = 1, num_knots = c(15), smoothness_orders = 0, squash = TRUE, p_reserve = 0.9)
+lrnr <- lrnr$train(task_Jt)
+```
+
+
+ 
+
+```{r}
+library(hal9001)
+length(lrnr$fit_object$basis_list)
+
+task_Jt <- make_task_N(data, node_list = node_list, folds = folds_nt, train = T)
+p <- lrnr$predict(task_Jt)
+grid <- quantile(data$A, seq(0,1, length = 25))
+
+data_long <- rbindlist(lapply(1:25, function(i) {
+  x <- data
+  x$A <- grid[i]
+  x
+}))
+
+task_Jt_long <- make_task_N(data_long, node_list = node_list, folds = folds_nt, train = F)
+x <- as.matrix(task_Jt_long$X)
+print(dim(x))
+task_Jt_long$X
+x <- make_design_matrix(x, lrnr$fit_object$basis_list, 0.9)
+data.table(lrnr$predict(task_Jt_long))
+```
+
+
+
+
+
+```{r}
+#data <- as.data.table(simulate(1000, censoring = TRUE))
+# processed <- process_data(data, node_list, covariates = c("W1", "W2"))
+# data <- processed$data
+# node_list <- processed$node_list
+# 
+# data <- shape_long(data, node_list)
+
+task_Jt_train <- make_task_N(data, node_list = node_list, folds = folds_nt, train = T)
+
+task_Jt <- make_task_N(data, node_list = node_list, folds = folds_nt, train = F)
+X_long <- rbindlist(lapply(1:25, function(i) {
+  x <- task_Jt$X
+  x$A <- grid[i]
+  x
+}))
+X_long
+task_Jt$X
+basis_list <- hal9001::enumerate_basis(as.matrix(task_Jt_train$X), smoothness_orders = rep(1, ncol(task_Jt$X)), max_degree = 1, num_knots = c(15))
+
+```
+
+```{r}
+x_basis <- (hal9001::make_design_matrix(as.matrix(X_long),   basis_list))
+beta <- as.matrix(rnorm(ncol(x_basis)+1))
+dim(x_basis)
+dim(beta)
+preds <- as.vector(Matrix::tcrossprod(
+        x = x_basis,
+        y = as.matrix(beta)[-1]
+      ) + 2)
+length(preds)
+length(pmax(preds, 1))
+```
+
+```{r}
+as.matrix(c(1,1,1,1))
+
+
+```
+
+```{r}
+ devtools::load_all()
+```
+
+```{r}
+library(origami)
+library(data.table)
+library(sl3)
+library(simcausal)
+library(uuid)
+```
+
+```{r}
+#   survs <- compute_survival_functions(output1$likelihoods$`J=0.112`, 15)
+# quantile(data_sim$T , seq(0,1,length=10))
+# quantile(data_sim$T[data_sim$Delta==1] , seq(0,1,length=10))
+# data.table(colMeans(matrix(survs$St, ncol = 15) ))
+# 
+# data.table(colMeans(matrix(output1$likelihoods[[1]]$N, ncol = 15)))
+# 
+# data.table(colMeans(matrix((0.05-output1$data$A/22+(output1$data$t-1)/12)*plogis( output1$data$t/15 -output1$data$A+ (output1$data$W1 + output1$data$W2)/2), ncol = 15)))
+
+S <- t(apply(1-matrix((0.05-output1$data$A/22+(output1$data$t-1)/12)*plogis( output1$data$t/15 -output1$data$A+ (output1$data$W1 + output1$data$W2)/2), ncol = 15),1, cumprod))
+N <- matrix((0.05-output1$data$A/22+(output1$data$t-1)/12)*plogis( output1$data$t/15 -output1$data$A+ (output1$data$W1 + output1$data$W2)/2), ncol = 15)
+S <- cbind(rep(1, nrow(S)), S[,-ncol(S)])
+J <- matrix(1-pbeta(cutoffs_J, shape1 = 1.5 + output1$data$t/15 + (output1$data$W1 + output1$data$W2 + output1$data$A)/2, shape2 = 2), ncol =15)
+
+data.table(mean((t(apply(S  * N *J  ,1, cumsum)))[,7] * (output1$data$A >= cutoffs_A))/mean( (output1$data$A >= cutoffs_A)))
+# 
+# 
+# data.table(colMeans(t(apply(matrix(survs$St, ncol = 15) * matrix(output1$likelihoods[[1]]$N, ncol = 15) ,1, cumsum))))
+# 
+# data.table(matrix(survs$Ft, ncol = 15))
+#as.data.table(matrix(output1$likelihoods$`J=0.122`$J[[1]], ncol = 15))
+```
+```{r}
+data
+data_sim
+  colMeans(matrix(output1$fits[[1]]$Ft,ncol=15))
+  
+mean(data$T <= 13 )
+mean(data_sim$T <= 14 )
+data.table(t(apply(1-matrix(output1$likelihoods$`J=0.122`$N, ncol = 14), 1, cumprod)))
+
+data.table(matrix(output1$likelihoods$`J=0.122`$N, ncol = 14))
+mean(data$T <= 14 &data$Delta==1)/mean(data$Delta==1)
+mean(data_sim$T <= 14 &data_sim$Delta==1) /mean(data_sim$Delta==1)
+```
+
+```{r, include = T}
+
+data <- as.data.table(simulate(2000, censoring = TRUE))
+data_sim <- as.data.table(simulate(25000, censoring = F))
+target_times <- c(7)
+cutoffs_J <- signif(quantile(data$J, c( 0.5 )),3)
+cutoffs_A <- signif(quantile(data$A, c(0.35)),3)
+grid <- quantile(data$A, seq(0,1, length = 25))
+node_list <- list(W = c("W1","W2"), A = "A", "J" = "J", weights = "weights")
+output1 <- survivalThresh(data, covariates = node_list$W, cutoffs_A = cutoffs_A, cutoffs_J = cutoffs_J, target_times = target_times, ngrid_A = 20, lrnr = Lrnr_hal9001$new(max_degree = 2, num_knots = c(15,10), smoothness_orders = 1, squash = TRUE, p_reserve = 0.9) , lrnr_A =    Lrnr_hal9001$new(max_degree = 1, num_knots = c(20), smoothness_orders = 1, squash = TRUE, p_reserve = 0.9),
+                          max_eps =1e-1, split_by_J = T, max_iter = 100, fast_analysis = T)
+
+# Lrnr_cv$new(Lrnr_stack$new(Lrnr_glmnet$new(), Lrnr_xgboost$new(max_depth = 4), Lrnr_hal9001$new() Lrnr_gam$new()), meta_learner = Lrnr_cv_selector$new(loss_loglik_binomial))
+
+
+```
+
+ 
+```{r}
+data_sim <- as.data.table(simulate(25000, censoring = F))
+
+m <- 1
+data_sim
+j=1
+output1$estimates$`t=7`[[1]]$psi
+
+mean((data_sim$T <= 7 &data_sim$Delta==1)*(data_sim$J >=cutoffs_J[j])*(data_sim$A >= cutoffs_A[m]))/mean(data_sim$A >= cutoffs_A[m] &data_sim$Delta==1)
+
+
+ mean(matrix(output1$fits[[1]]$Ft,ncol=15)[,7]*(data$A >= cutoffs_A[m]))/mean(data$A >= cutoffs_A[m])
+```
+
+

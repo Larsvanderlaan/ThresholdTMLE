@@ -1,0 +1,50 @@
+"0","library(origami)"
+"2","Registered S3 method overwritten by 'data.table':
+  method           from
+  print.data.table     
+"
+"2","origami v1.0.3: Generalized Framework for Cross-Validation
+"
+"0","library(data.table)"
+"2","data.table 1.14.0 using 1 threads (see ?getDTthreads).  Latest news: r-datatable.com
+"
+"2","**********
+This installation of data.table has not detected OpenMP support. It should still work but in single-threaded mode.
+This is a Mac. Please read https://mac.r-project.org/openmp/. Please engage with Apple and ask them for support. Check r-datatable.com for updates, and our Mac instructions here: https://github.com/Rdatatable/data.table/wiki/Installation. After several years of many reports of installation problems on Mac, it's time to gingerly point out that there have been no similar problems on Windows or Linux.
+**********
+"
+"0","library(sl3)"
+"2","Registered S3 methods overwritten by 'htmltools':
+  method               from         
+  print.html           tools:rstudio
+  print.shiny.tag      tools:rstudio
+  print.shiny.tag.list tools:rstudio
+"
+"2","Registered S3 method overwritten by 'htmlwidgets':
+  method           from         
+  print.htmlwidget tools:rstudio
+"
+"2","sl3 1.4.3
+"
+"2","Please note the package is under active development.
+Check often for updates and report bugs at https://github.com/tlverse/sl3. 
+
+"
+"0","library(simcausal)"
+"2","simcausal
+"
+"2","Version: 0.5.5
+"
+"2","Package created on 
+
+"
+"2","Please note this package is still in its early stages of development. Check for updates and report bugs at http://github.com/osofr/simcausal.
+
+"
+"2","To see the vignette use vignette(""simcausal_vignette"", package=""simcausal""). To see all available package documentation use help(package = ""simcausal"") and ?simcausal.
+
+"
+"2","To see the latest updates for this version, use news(package = ""simcausal"").
+
+"
+"0","library(uuid)"
