@@ -1,9 +1,10 @@
 
 
-process_data <- function(data, node_list, covariates, trt = "A", Ttilde = "Ttilde", Delta = "Delta", J = "J", weights = NULL) {
+process_data <- function(data, covariates, trt = "A", Ttilde = "Ttilde", Delta = "Delta", J = "J", weights = NULL) {
   node_list <- list(W = covariates, A = "A", weights = "weights", "J" = "J", Delta = "Delta", Ttilde = "Ttilde")
   data_new <- data.table( A = data[[trt]], Ttilde = data[[Ttilde]], Delta = data[[Delta]], J = data[[J]])
   set(data_new,, covariates, data[, covariates, with = F])
+
   if(!is.null(weights)) {
     data_new$weights <- data[[weights]]
   } else {
@@ -15,14 +16,37 @@ process_data <- function(data, node_list, covariates, trt = "A", Ttilde = "Ttild
   return(list(data = data, node_list = node_list))
 }
 
-survivalThresh <- function(data, covariates, trt = "A", Ttilde = "Ttilde", Delta = "Delta", J = "J", weights = NULL, cutoffs_A, cutoffs_J, target_times, lrnr = Lrnr_glmnet$new(), lrnr_A = lrnr, lrnr_C = lrnr, lrnr_N = lrnr, lrnr_J = lrnr, n_full_sample = NULL, ngrid_A = 25, type_A = c("above", "below", "equal"), type_J = c("above", "below", "equal"), split_by_J = TRUE, max_eps = 0.05, max_iter = 100, fast_analysis = F, verbose = TRUE) {
+survivalThresh <- function(data, covariates, trt = "A", Ttilde = "Ttilde", Delta = "Delta", J = "J", weights = NULL, biased_sampling_indicator = NULL,  biased_sampling_group = NULL, cutoffs_A, cutoffs_J, target_times, lrnr = Lrnr_glmnet$new(), lrnr_A = lrnr, lrnr_C = lrnr, lrnr_N = lrnr, lrnr_J = lrnr, ngrid_A = 25, type_A = c("above", "below", "equal"), type_J = c("above", "below", "equal"), split_by_J = TRUE, max_eps = 0.05, max_iter = 100, fast_analysis = F, verbose = TRUE) {
+  data <- as.data.table(data)
+  n_full_sample <- nrow(data)
+  data_full <- data
+  print(weights)
+  if(is.null(weights) & !is.null(biased_sampling_group)) {
+    groups <- unique(data_full[[biased_sampling_group]])
+    data_full$weights <- 0
 
+    for(grp in groups) {
+      keep <- data_full[[biased_sampling_group]] == grp
+
+      set(data_full, which(keep), "weights", rep(1/mean(data_full[keep, biased_sampling_indicator, with = F][[1]]), sum(keep)))
+    }
+    weights <- "weights"
+  }
   if(verbose) {
     print("Processing data...")
   }
-  processed <- process_data(data, node_list, covariates, trt, Ttilde, Delta, J, weights)
-  data <- processed$data
+  processed <- process_data(data_full, covariates, trt, Ttilde, Delta, J, weights)
+  data_full <- processed$data
+  data_full[[biased_sampling_indicator]] <- data[[biased_sampling_indicator]]
+  data_full[[biased_sampling_group]] <- data[[biased_sampling_group]]
+  print(dim(data_full))
+  print(dim(data))
+
   node_list <- processed$node_list
+  if(!is.null(biased_sampling_indicator)) {
+    data <- data_full[data_full[[biased_sampling_indicator]]==1,]
+  }
+  print(data_full)
   print(data)
   type_J <- match.arg(type_J)
   type_A <- match.arg(type_A)
@@ -119,7 +143,8 @@ survivalThresh <- function(data, covariates, trt = "A", Ttilde = "Ttilde", Delta
           print("Computing parameter estimates with sequential regression")
         }
 
-        res <- sequential_targeting(data, data_orig, fits, likelihoods, target_times, node_list, n_full_sample = n_full_sample, fast_analysis = fast_analysis)
+        res <- sequential_targeting(data, data_orig, data_full, fits, likelihoods, target_times, node_list, n_full_sample , biased_sampling_group , biased_sampling_indicator , fast_analysis = fast_analysis)
+
       } else if (type_A == "equal") {
         if(verbose) {
           print("Computing parameter estimates")
@@ -170,12 +195,12 @@ survivalThresh <- function(data, covariates, trt = "A", Ttilde = "Ttilde", Delta
       if(verbose) {
         print("Computing parameter estimates with sequential regression")
       }
-      res <- sequential_targeting(data, data_orig, fits, likelihoods, target_times, node_list, n_full_sample = n_full_sample, fast_analysis = fast_analysis)
+      res <- sequential_targeting(data, data_orig, data_full, fits, likelihoods, target_times, node_list, n_full_sample = n_full_sample, fast_analysis = fast_analysis)
     } else if (type_A == "equal") {
       if(verbose) {
         print("Computing parameter estimates")
       }
-      res <- Fixed_treatment_targeting(data, data_orig, fits, likelihoods, target_times, node_list)
+      res <- Fixed_treatment_targeting(data, data_orig, data_full, fits, likelihoods, target_times, node_list, n_full_sample = n_full_sample, fast_analysis = fast_analysis)
 
     }
 

@@ -9,7 +9,7 @@ bound <- function(x, bounds) {
   pmin(pmax(x, lower), upper)
 }
 
-
+#' @import simcausal
 simulate <- function(n, censoring = TRUE) {
 
   do <- function(x) {

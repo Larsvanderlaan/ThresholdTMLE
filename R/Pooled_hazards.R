@@ -10,7 +10,7 @@ library(R6)
 #'
 #' @importFrom R6 R6Class
 #' @importFrom assertthat assert_that is.count is.flag
-#'
+#' @importFrom uuid UUIDgenerate
 #' @export
 #'
 #' @keywords data
@@ -27,8 +27,7 @@ library(R6)
 #'   \item{\code{binomial_learner}}{The learner to wrap.}
 #' }
 #'
-#' @template common_parameters
-#
+
 Lrnr_pooled_hazards <- R6Class(
   classname = "Lrnr_pooled_hazards",
   inherit = Lrnr_base, portable = TRUE,

@@ -1,0 +1,190 @@
+---
+title: "hi"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+
+
+
+```{r}
+n = 500
+library(sl3)
+library(simcausal)
+ D <- DAG.empty()
+  D <- D +
+    node("W1", distr = "runif", min = -1, max = 1 ) +
+    node("W2", distr = "runif", min = -1, max = 1 ) +
+     node("A", distr = "rbinom", size = 1, prob = plogis( W1 + W2 + W1^2 + W2^2) )  +
+    node("Y", distr = "rbinom", size = 1, prob = plogis(W1 + W2 + A + A*(W1 + W2)) ) 
+   
+
+setD <- set.DAG(D)
+suppressMessages(dat <- sim(setD, n = n))
+
+lrnr <- Lrnr_cv$new(Lrnr_polspline$new())
+
+taskY <- sl3_Task$new(dat, covariates = c("W1", "W2", "A"), outcome = "Y")
+
+dat_cf <- dat
+dat_cf$A <- 1
+taskY1 <- sl3_Task$new(dat_cf, covariates = c("W1", "W2", "A"), outcome = "Y")
+
+taskA <- sl3_Task$new(dat, covariates = c("W1", "W2"), outcome = "A")
+
+
+lrnr_A <- lrnr$train(taskA)
+lrnr_Y <- lrnr$train(taskY)
+```
+
+```{r}
+
+g1 <- lrnr_A$predict_fold(task_A, "validation")
+Q1 <- lrnr_Y$predict_fold(taskY1, "validation")
+
+```
+
+
+```{r}
+
+
+n <- 100
+  samples <- rbinom(n, size = 6, prob = 0.3)
+  Pn <- table(samples) / n
+  est <- mean(samples)
+  vals <- as.numeric(names(Pn))
+  count <- 0
+  fluct <- function(eps) {
+    Qn <- Pn *(1 + eps *(vals - est))
+    if(sum(Qn)!= 1){
+      count <<- count + 1
+      return(Pn)
+    }
+    return(Qn)
+  }
+  Qns <- sapply(seq(-1,1,length =1000), fluct)
+  #Qns <- do.call(cbind, na.omit(Qns))
+  
+  compute_divergence <- function(sample, f) {
+    Qn <- sample
+    abs(sum(Pn*f(Qn/Pn)))
+  }
+
+  KLdiv <- as.vector(apply(Qns, 2, compute_divergence, f = function(v) {
+  k=2
+  #return(-2*log(v) + 2*v - 2)
+  (v^k - k*v + k -1)/(2*k*(k-1))
+}))
+
+  ests <- apply(Qns, 2, function(v) {
+    sum(v*vals)
+  })
+  cutoff <- qchisq(0.95, df =1)/n
+  keep <- !is.na(KLdiv) & (abs(KLdiv) <= cutoff)
+  ests <- ests[keep]
+  pass <- (truth >= min(ests)) && (truth <= max(ests))
+  est
+  truth
+  print(quantile(ests))
+
+```
+
+
+
+```{r}
+truth <- 0.3*25
+do_once <- function(...){
+  n <-150
+  samples <- rbinom(n, size = 25, prob = 0.3)
+  Pn <- table(samples) / n
+  est <- mean(samples)
+  vals <- as.numeric(names(Pn))
+  count <- 0
+  fluct <- function(eps) {
+    Qn <- Pn *(1 + eps *(vals - est)/sd(samples))
+    if(sum(Qn)!= 1 || any(Qn < 0) || any(Qn > 1)){
+      count <<- count + 1
+      return(Pn)
+    }
+    return(Qn)
+  }
+  Qns <- sapply(seq(-1,1,length =1500), fluct)
+  #Qns <- do.call(cbind, na.omit(Qns))
+  
+  compute_divergence <- function(sample, f) {
+    Qn <- sample
+    (sum(Pn*f(Qn/Pn)))
+  }
+
+  suppressWarnings(KLdiv <- as.vector(apply(Qns, 2, compute_divergence, f = function(v) {
+  k=.00001
+  return(0.5*(v-1)^2)
+  return(-2*v*log(v) - 2*v + 2)
+  #  return(-2*log(v) + 2*v - 2)
+  return((v^k - k*v + k -1)/(2*k*(k-1)))
+})))
+
+  ests <- apply(Qns, 2, function(v) {
+    sum(v*vals)
+  })
+  cutoff <- qchisq(0.95, df =1)/n
+  keep <- !is.na(KLdiv) & ((KLdiv) <= cutoff)
+  
+   
+  ests <- ests[keep]
+  pass <- (truth >= min(ests)) && (truth <= max(ests))
+  return(pass)
+}
+
+
+
+```
+
+```{r}
+table(sapply(1:1000, do_once))
+
+do_asym <- function(...){
+  n <- 1000
+  samples <- rbinom(n, size = 6, prob = 0.3)
+  
+  est <- mean(samples)
+  se <- 1.96*sd(samples)/sqrt(n)
+  (truth <= est + se) & (truth >= est - se)
+}
+table(sapply(1:1000, do_asym))
+
+```
+
+```{r}
+n <- 200
+samples <- rnorm(n)
+Pn <- table(samples) / n
+est <- mean(samples)
+
+bootstrap_samples <-replicate(1000,sample(samples, n, replace = T))
+bootstrap_est <- apply(bootstrap_samples,2,mean)
+ 
+bootstrap_samples <- cbind(samples, bootstrap_samples)
+compute_divergence <- function(sample, f) {
+  Qn <- table(sample)/n
+  missing_names <- setdiff(names(Pn), names(Qn))
+  missing <- rep(0, length(missing_names))
+  names(missing) <- missing_names
+  Qn <- c(Qn, missing)
+  Qn <- Qn[names(Pn)]
+  abs(sum(Pn*f(Qn/Pn)))
+}
+KLdiv <- as.vector(apply(bootstrap_samples, 2, compute_divergence, f = function(v) {
+  k=2
+  (v^k - k*v + k -1)/(2*k*(k-1))
+}))
+keep <- abs(KLdiv) <= qchisq(0.95, df =1)/n
+quantile(KLdiv)
+bootstrap_est <- bootstrap_est[keep]
+c(min(bootstrap_est),  est, max(bootstrap_est))
+```

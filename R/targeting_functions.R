@@ -236,7 +236,7 @@ update_N <- function(data, likelihoods, fits, node_list, target_times, step) {
   return(likelihoods)
 }
 
-sequential_targeting <- function(data, data_orig, fits, likelihoods, target_times, node_list, n_full_sample = NULL, fast_analysis = F) {
+sequential_targeting <- function(data, data_orig, data_full, fits, likelihoods, target_times, node_list, n_full_sample = NULL, biased_sampling_group = NULL, biased_sampling_indicator = NULL, fast_analysis = F) {
   nt <- max(data$t)
   n <- nrow(data_orig)
   if(is.null(n_full_sample)) {
@@ -296,6 +296,7 @@ sequential_targeting <- function(data, data_orig, fits, likelihoods, target_time
       EIC_W_list <- list()
       EIC_J_list <- list()
       EIC_N_list <- list()
+      EIC_q_list <- list()
       for(A_tgt in cutoffs_A) {
         index <- sapply(A_tgt, function(a) {
           which.min(abs(a - grid))
@@ -322,13 +323,45 @@ sequential_targeting <- function(data, data_orig, fits, likelihoods, target_time
         index_EIC_N <- (index_A-1)*(length(cutoffs_J)*length(target_times)) + (index_J-1)*length(target_times) + index_t
         index_EIC_J <- (index_J-1)*(length(cutoffs_A)*length(target_times)) + (index_t-1)*length(cutoffs_A) + index_A
 
+
         EIC_J <- fits$EIC_J[,index_EIC_J]
         EIC_N <- fits$EIC_N[,index_EIC_N]
+        EIC_A <- (Ft_AW - update_psi_W_k) * drop*X$g * weights
+        EIC_W <- (update_psi_W_k - weighted.mean(update_psi_W_k, weights)) * weights
+
+        EIC_underlying <- EIC_W + EIC_A + EIC_N + EIC_J
+        EIC_underlying <- EIC_underlying / data_orig$weights
+        if(!is.null(biased_sampling_group)) {
+          groups <- unique(data_full[[biased_sampling_group]])
+          EIC_q <- rep(NA, nrow(data_full))
+          for(grp in groups) {
+            keep1 <- data_orig[[biased_sampling_group]] == grp
+            keep2 <- data_full[[biased_sampling_group]] == grp
+            EIC_q[keep2] <- mean(EIC_underlying[keep1])
+            #EIC_proj_list <- c(EIC_proj_list, mean(EIC[keep]))
+          }
+          EIC_q <- (1 - data_full[[biased_sampling_indicator]]*data_full$weights ) * EIC_q
+
+
+        } else {
+          EIC_q <- rep(0, nrow(data_full))
+        }
+        EIC_W_full <-  rep(0, nrow(data_full))
+        EIC_A_full <-  rep(0, nrow(data_full))
+        EIC_N_full <-  rep(0, nrow(data_full))
+        EIC_J_full <-  rep(0, nrow(data_full))
+        EIC_W_full[data_full[[biased_sampling_indicator]]==1] <- EIC_W
+        EIC_A_full[data_full[[biased_sampling_indicator]]==1] <- EIC_A
+        EIC_N_full[data_full[[biased_sampling_indicator]]==1] <- EIC_N
+        EIC_J_full[data_full[[biased_sampling_indicator]]==1] <- EIC_J
+
         psi_list[[as.character(A_tgt)]] <- update_psi_W_k
-        EIC_A_list[[as.character(A_tgt)]] <- (Ft_AW - update_psi_W_k) * drop*X$g * weights
-        EIC_W_list[[as.character(A_tgt)]] <- (update_psi_W_k - weighted.mean(update_psi_W_k, weights)) * weights
-        EIC_J_list[[as.character(A_tgt)]] <- EIC_J
-        EIC_N_list[[as.character(A_tgt)]] <- EIC_N
+        EIC_A_list[[as.character(A_tgt)]] <- EIC_A_full
+        EIC_W_list[[as.character(A_tgt)]] <- EIC_W_full
+        EIC_J_list[[as.character(A_tgt)]] <- EIC_J_full
+        EIC_N_list[[as.character(A_tgt)]] <- EIC_N_full
+        EIC_q_list[[as.character(A_tgt)]] <- EIC_q
+
       }
 
       psi_W <- do.call(cbind,psi_list)
@@ -336,16 +369,17 @@ sequential_targeting <- function(data, data_orig, fits, likelihoods, target_time
       EIC_N <- do.call(cbind, EIC_N_list)
       EIC_W <- do.call(cbind, EIC_W_list)
       EIC_A <- do.call(cbind, EIC_A_list)
+      EIC_q <- do.call(cbind, EIC_q_list)
       colnames(psi_W) <- paste0("A=", cutoffs_A)
 
-      psi_list_J[[paste0("J=",J_tgt)]] <- list(psi = apply(psi_W, 2, weighted.mean, weights), psi_W = psi_W, EIC_J = EIC_J, EIC_N = EIC_N, EIC_W = EIC_W, EIC_A = EIC_A, EIC = EIC_W + EIC_A + EIC_N + EIC_J)
+      psi_list_J[[paste0("J=",J_tgt)]] <- list(psi = apply(psi_W, 2, weighted.mean, weights), psi_W = psi_W, EIC_J = EIC_J, EIC_N = EIC_N, EIC_W = EIC_W, EIC_A = EIC_A, EIC_q = EIC_q, EIC = EIC_W + EIC_A + EIC_N + EIC_J + EIC_q, EIC_IPW = EIC_W + EIC_A + EIC_N + EIC_J )
     }
     psi_list_t[[paste0("t=", t_tgt)]] <- psi_list_J
   }
   return(psi_list_t)
 }
 
-Fixed_treatment_targeting <- function(data, data_orig, fits, likelihoods, target_times, node_list) {
+Fixed_treatment_targeting <-  function(data, data_orig, data_full, fits, likelihoods, target_times, node_list, n_full_sample = NULL, biased_sampling_group = NULL, biased_sampling_indicator = NULL, fast_analysis = F) {
   nt <- max(data$t)
   n <- nrow(data_orig)
   grid <- fits$grid_A
@@ -379,10 +413,11 @@ Fixed_treatment_targeting <- function(data, data_orig, fits, likelihoods, target
 
 
       psi_list <- list()
-      EIC_A_list <- list()
+
       EIC_W_list <- list()
       EIC_J_list <- list()
       EIC_N_list <- list()
+      EIC_q_list <- list()
       for(A_tgt in cutoffs_A) {
         index <- sapply(A_tgt, function(a) {
           which.min(abs(a - cutoffs_A))
@@ -398,9 +433,41 @@ Fixed_treatment_targeting <- function(data, data_orig, fits, likelihoods, target
         EIC_J <- fits$EIC_J[,index_EIC_J]
         EIC_N <- fits$EIC_N[,index_EIC_N]
         psi_list[[as.character(A_tgt)]] <- Ft_W_k
-        EIC_W_list[[as.character(A_tgt)]] <- (Ft_W_k - weighted.mean(Ft_W_k, weights)) * weights
-        EIC_J_list[[as.character(A_tgt)]] <- EIC_J
-        EIC_N_list[[as.character(A_tgt)]] <- EIC_N
+        EIC_W<- (Ft_W_k - weighted.mean(Ft_W_k, weights)) * weights
+
+
+        EIC_underlying <- EIC_W  + EIC_N + EIC_J
+        EIC_underlying <- EIC_underlying / data_orig$weights
+        if(!is.null(biased_sampling_group)) {
+          groups <- unique(data_full[[biased_sampling_group]])
+          EIC_q <- rep(NA, nrow(data_full))
+          for(grp in groups) {
+            keep1 <- data_orig[[biased_sampling_group]] == grp
+            keep2 <- data_full[[biased_sampling_group]] == grp
+            EIC_q[keep2] <- mean(EIC_underlying[keep1])
+            #EIC_proj_list <- c(EIC_proj_list, mean(EIC[keep]))
+          }
+          EIC_q <- (1 - data_full[[biased_sampling_indicator]]*data_full$weights ) * EIC_q
+
+
+        } else {
+          EIC_q <- rep(0, nrow(data_full))
+        }
+        EIC_W_full <-  rep(0, nrow(data_full))
+        EIC_N_full <-  rep(0, nrow(data_full))
+        EIC_J_full <-  rep(0, nrow(data_full))
+        EIC_W_full[data_full[[biased_sampling_indicator]]==1] <- EIC_W
+        EIC_N_full[data_full[[biased_sampling_indicator]]==1] <- EIC_N
+        EIC_J_full[data_full[[biased_sampling_indicator]]==1] <- EIC_J
+
+        psi_list[[as.character(A_tgt)]] <- update_psi_W_k
+        EIC_W_list[[as.character(A_tgt)]] <- EIC_W_full
+        EIC_J_list[[as.character(A_tgt)]] <- EIC_J_full
+        EIC_N_list[[as.character(A_tgt)]] <- EIC_N_full
+        EIC_q_list[[as.character(A_tgt)]] <- EIC_q
+
+
+
       }
 
       psi_W <- do.call(cbind,psi_list)
@@ -409,8 +476,9 @@ Fixed_treatment_targeting <- function(data, data_orig, fits, likelihoods, target
       EIC_W <- do.call(cbind, EIC_W_list)
 
       colnames(psi_W) <- paste0("A=", cutoffs_A)
+      EIC_q <- do.call(cbind, EIC_q_list)
 
-      psi_list_J[[paste0("J=",J_tgt)]] <- list(psi = apply(psi_W, 2, weighted.mean, weights), psi_W = psi_W, EIC_J = EIC_J, EIC_N = EIC_N, EIC_W = EIC_W, EIC = EIC_W + EIC_N + EIC_J)
+      psi_list_J[[paste0("J=",J_tgt)]] <- list(psi = apply(psi_W, 2, weighted.mean, weights), psi_W = psi_W, EIC_J = EIC_J, EIC_N = EIC_N, EIC_W = EIC_W, EIC_q = EIC_q, EIC = EIC_W  + EIC_N + EIC_J + EIC_q, EIC_IPW = EIC_W  + EIC_N + EIC_J )
     }
     psi_list_t[[paste0("t=", t_tgt)]] <- psi_list_J
   }

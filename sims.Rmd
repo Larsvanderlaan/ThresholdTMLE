@@ -40,24 +40,26 @@ hist(data_sim$T[data_sim$A>= 0.5])
  estimates<-list()
  outcome <- c()
 
-for(i in 1:100) {
+#for(i in 1:100) {
   #try({
-  print(i)
-  #data <- as.data.table(simulate(2000, censoring = TRUE))
+   #data <- as.data.table(simulate(2000, censoring = TRUE))
   #data_sim <- as.data.table(simulate(25000, censoring = F))
     data_full <- as.data.table(simulate(3000, censoring = TRUE))
   group <- (data_full$W1<=0)
   g1 <- sample(which(group), 750, replace = F)
   g2 <- sample(which(!group), 1250, replace = F)
-  data <- data_full[c(g1,g2),]
-  data$group <- c(rep(1,750), rep(0,1250))
-  data$weights <-1/ c(rep(750/sum(group), 750), rep(1250/sum(1-group), 1250))
+  #data <- data_full[c(g1,g2),]
+  data_full$group <- NA
+  data_full$group[which(group)] <- "1"
+  data_full$group[which(!group)] <- "2"
+  data_full$R <- as.numeric(1:nrow(data_full) %in% union(g1,g2))
+  #data$weights <-1/ c(rep(750/sum(group), 750), rep(1250/sum(1-group), 1250))
   target_times <- c(7)
   cutoffs_J <- 0.516
   cutoffs_A <- 0.5
   node_list <- list(W = c("W1","W2"), A = "A", "J" = "J", weights = "weights")
-  output1 <- survivalThresh(data, weights = "weights", covariates = node_list$W, cutoffs_A = cutoffs_A, cutoffs_J = cutoffs_J, target_times = target_times, ngrid_A = 20, lrnr = Lrnr_hal9001$new(max_degree = 2, num_knots = c(10,5), smoothness_orders = 1, squash = TRUE, p_reserve = 0.95) , lrnr_A =    Lrnr_hal9001$new(max_degree = 2, num_knots = c(15,5), smoothness_orders = 1, squash = TRUE, p_reserve = 0.95),
-                            max_eps =1e-1, split_by_J = T, max_iter = 100, fast_analysis = T, n_full_sample = 3000)
+  output1 <- survivalThresh(data_full, biased_sampling_indicator = "R",  weights = NULL, biased_sampling_group = "group", covariates = node_list$W, cutoffs_A = cutoffs_A, cutoffs_J = cutoffs_J, target_times = target_times, ngrid_A = 20, lrnr = Lrnr_hal9001$new(max_degree = 2, num_knots = c(10,5), smoothness_orders = 1, squash = TRUE, p_reserve = 0.95) , lrnr_A =    Lrnr_hal9001$new(max_degree = 2, num_knots = c(15,5), smoothness_orders = 1, squash = TRUE, p_reserve = 0.95),
+                            max_eps =1e-1, split_by_J = T, max_iter = 100, fast_analysis = T)
   
   est <- output1$estimates$`t=7`[[1]]$psi
   radius <- 1.96*sd(c(rep(0, 1000),output1$estimates$`t=7`[[1]]$EIC))/sqrt(nrow(data_full))
@@ -68,7 +70,7 @@ for(i in 1:100) {
   print(table(outcome))
   mean(outcome)
   #})
-}
+#}
 
 
 ```
