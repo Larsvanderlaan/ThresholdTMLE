@@ -19,7 +19,7 @@ library(mvtnorm)
 #' @return In the case where only thresholds_above or thresholds_below is supplied, it is a list containing an element "results" with estimates, CI, and simultaneous CI
 #' In the case where both thresholds_above and thresholds_below are supplied, it is a list with two elements "above_estimates" and "lower_estimates" which contains the same information as above for the upper and lower thresholds parameters.
 #'
-#'
+#' @export
 pointTreatmentThresh <- function(data_full, node_list, thresholds = NULL, biased_sampling_strata = NULL, biased_sampling_indicator = NULL, lrnr_A = Lrnr_glmnet$new(), lrnr_Y = Lrnr_glmnet$new(), lrnr_Delta = Lrnr_glmnet$new()) {
   upper_list <- list()
   lower_list <- list()

@@ -1,0 +1,313 @@
+---
+title: "RareEvent"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+ 
+
+
+```{r}
+n <- 10000
+D <- DAG.empty()
+D <- D +
+  node("W1", distr = "runif", min = -1, max = 1) +
+  node("W2", distr = "rnorm", mean = 0) +
+  node("W3full", distr = "rexp", rate = 1) +
+  node("W3", distr = "rconst", const = min(W3full,3))+
+  node("S", distr = "rgamma", shape = abs(2.5),rate=13  ) +
+  node("PY", distr = "rconst", const = 0.05 * logit(0.7*(0.5-7*S -2*(S >0.2) + W1+W2+2*W1*(W2 >0) - 2*W2*(W1>0) + W2*sin(3*W1) + W3 * (S-0.1) - W3*cos(3*W1)))) +
+  node("Y", distr = "rbinom", size =1, prob = PY)
+D <- set.DAG(D)
+data_full <- sim(D, n = n)
+hist(data_full$S)
+plot(data_full$S, data_full$PY)
+truth <- mean(data_full$Y * (data_full$S >= thresh)) / mean(data_full$S >= thresh)
+
+truth
+
+n <- 100000
+D <- DAG.empty()
+D <- D +
+  node("W1", distr = "runif", min = -1, max = 1) +
+  node("W2", distr = "rnorm", mean = 0) +
+  node("W3full", distr = "rexp", rate = 1) +
+  node("W3", distr = "rconst", const = min(W3full,3))+
+  node("S", distr = "rgamma", shape = 2 + W1^2 + W2^2 + (W3/3)^2 ,rate= 12.5 + W1 + W2 + W3/3 ) +
+  node("PY", distr = "rconst", const = 0.05 * logit(0.7*(0.5-7*S -2*(S >0.2) + W1+W2+2*W1*(W2 >0) - 2*W2*(W1>0) + W2*sin(3*W1) + W3 * (S-0.1) - W3*cos(3*W1)))) +
+  node("Y", distr = "rbinom", size =1, prob = PY)
+D <- set.DAG(D)
+data_full <- sim(D, n = n)
+hist(data_full$S)
+truth <- mean(data_full$Y * (data_full$S >= thresh)) / mean(data_full$S >= thresh)
+
+truth
+
+
+n <- 100000
+D <- DAG.empty()
+D <- D +
+  node("W1", distr = "runif", min = -1, max = 1) +
+  node("W2", distr = "rnorm", mean = 0) +
+  node("W3full", distr = "rexp", rate = 1) +
+  node("W3", distr = "rconst", const = min(W3full,3))+
+  node("S", distr = "rgamma", shape = abs(2.5),rate=13  ) +
+  node("PY", distr = "rconst", const = 0.05 * logit(0.7*(0.5-7*S -2*(S >0.2) + W1+W2+2*W1*(W2 >0) - 2*W2*(W1>0) + W2*sin(3*W1) + W3 * (S-0.1) - W3*cos(3*W1)))) +
+  node("Y", distr = "rbinom", size =1, prob = PY)
+D <- set.DAG(D)
+data_full <- sim(D, n = n)
+hist(data_full$S)
+plot(data_full$S, data_full$PY)
+truth <- mean(data_full$Y * (data_full$S >= thresh)) / mean(data_full$S >= thresh)
+
+truth
+```
+ 
+
+
+# unconfounding 
+```{r}
+
+n <- 500000
+D <- DAG.empty()
+D <- D +
+  node("W1", distr = "runif", min = -1, max = 1) +
+  node("W2", distr = "rnorm", mean = 0) +
+  node("W3full", distr = "rexp", rate = 1) +
+  node("W3", distr = "rconst", const = min(W3full,3))+
+  node("S", distr = "rgamma", shape = abs(2.5),rate=13  ) +
+  node("PY", distr = "rconst", const = 0.05 * logit(0.7*(0.5-7*S -2*(S >0.2) + W1+W2+2*W1*(W2 >0) - 2*W2*(W1>0) + W2*sin(3*W1) + W3 * (S-0.1) - W3*cos(3*W1)))) +
+  node("Y", distr = "rbinom", size =1, prob = PY)
+D <- set.DAG(D)
+data_full <- sim(D, n = n)
+hist(data_full$S)
+plot(data_full$S, data_full$PY)
+truth <- mean(data_full$Y * (data_full$S >= thresh)) / mean(data_full$S >= thresh)
+
+truth
+thresh <- median(data_full$S)
+library(SuperLearner)
+CI_SL <- data.frame(matrix(NA, nrow = 1000, ncol = 3))
+covers_SL <- rep(NA,1000)
+
+CI_glmnet <- data.frame(matrix(NA, nrow = 1000, ncol = 3))
+covers_glmnet <- rep(NA,1000)
+
+CI_donovan<- data.frame(matrix(NA, nrow = 1000, ncol = 3))
+covers_donovan <- rep(NA,1000)
+library(simcausal)
+for( i in 1:1000) {
+n <- 10000
+D <- DAG.empty()
+D <- D +
+  node("W1", distr = "runif", min = -1, max = 1) +
+  node("W2", distr = "rnorm", mean = 0) +
+  node("W3full", distr = "rexp", rate = 1) +
+  node("W3", distr = "rconst", const = min(W3full,3))+
+  node("S", distr = "rgamma", shape = abs(2.5),rate=13  ) +
+  node("PY", distr = "rconst", const = 0.05 * logit(0.7*(0.5-7*S -2*(S >0.2) + W1+W2+2*W1*(W2 >0) - 2*W2*(W1>0) + W2*sin(3*W1) + W3 * (S-0.1) - W3*cos(3*W1)))) +
+  node("Y", distr = "rbinom", size =1, prob = PY)
+D <- set.DAG(D)
+data_full <- sim(D, n = n)
+
+
+mean(data_full$PY)
+table(data_full$Y)
+p1 = 1
+p0= 0.15
+keep <- union(sample(which(data_full$Y==0), round(length(which(data_full$Y==0))*p0), replace = F) , sample(which(data_full$Y==1), round(length(which(data_full$Y==1))*p1), replace = F)  )
+
+data_full$select = as.numeric(seq_len(nrow(data_full)) %in% keep)
+table(data_full[data_full$Y==1, "Y"])
+data_full$wt <- 1/p0
+data_full[data_full$Y==1, "wt"] <- 1/p1
+data_full
+baseline <- c("W1", "W2", "W3")
+marker = "S"
+outcome = "Y"
+
+thresh <- median(data_full[[marker]]) 
+data <- data_full[data_full[["select"]] ==1,]
+
+bayesglm_sl_lrnr <- make_learner(Lrnr_pkg_SuperLearner, "SL.bayesglm", outcome_type = variable_type("binomial"))
+
+lrnr_SL.gam <-  make_learner(Lrnr_pkg_SuperLearner, "SL.gam", outcome_type = variable_type("binomial"))
+
+lrnr_SL.inter<-  make_learner(Lrnr_pkg_SuperLearner, "SL.glm.interaction", outcome_type = variable_type("binomial"))
+
+sl_list <- list(Lrnr_xgboost$new(max_depth = 4), Lrnr_xgboost$new(max_depth = 3), bayesglm_sl_lrnr, lrnr_SL.inter, Lrnr_glmnet$new(), Lrnr_glm$new() )
+
+lrnr <- Lrnr_sl$new(sl_list, Lrnr_cv_selector$new(loss_loglik_binomial))
+
+est <- thresholdTMLE(data_full, list(W = baseline, Y = outcome, A  = marker, weights = "wt"), thresh , NULL,  biased_sampling_strata = "Y",  biased_sampling_indicator = "select", lrnr_A = lrnr, lrnr_Y = lrnr)
+
+se <- apply(est$upper[[1]]$IC_IPCW,2,sd)/sqrt(nrow(data_full))
+psi <- est$upper[[1]]$psi
+ci <- c(psi - 1.96*se, psi, psi + 1.96*se)
+CI_SL[i,] <- ci
+covers_SL[i] <- truth >= min(ci) &  truth <= max(ci)
+print(table(covers))
+print(mean(covers, na.rm = T))
+print(truth)
+print(ci)
+
+est <- thresholdTMLE(data_full, list(W = baseline, Y = outcome, A  = marker, weights = "wt"), thresh , NULL,  biased_sampling_strata = "Y",  biased_sampling_indicator = "select", lrnr_A = Lrnr_glmnet$new(), lrnr_Y = Lrnr_glmnet$new())
+
+se <- apply(est$upper[[1]]$IC_IPCW,2,sd)/sqrt(nrow(data_full))
+psi <- est$upper[[1]]$psi
+ci <- c(psi - 1.96*se, psi, psi + 1.96*se)
+CI_glmnet[i,] <- ci
+covers_glmnet[i] <- truth >= min(ci) &  truth <= max(ci)
+print(table(covers))
+print(mean(covers, na.rm = T))
+print(truth)
+print(ci)
+
+
+est <- thresholdTMLE(data_full, list(W = baseline, Y = outcome, A  = marker, weights = "wt"), thresh , NULL,  biased_sampling_strata = "Y",  biased_sampling_indicator = "select", lrnr_A = Lrnr_mean$new(), lrnr_Y = Lrnr_mean$new())
+
+se <- apply(est$upper[[1]]$IC_IPCW,2,sd)/sqrt(nrow(data_full))
+psi <- est$upper[[1]]$psi
+ci <- c(psi - 1.96*se, psi, psi + 1.96*se)
+CI_donovan[i,] <- ci
+covers_donovan[i] <- truth >= min(ci) &  truth <= max(ci)
+print(table(covers))
+print(mean(covers, na.rm = T))
+print(truth)
+print(ci)
+
+#mean(data_full$Y * (data_full$S >= thresh)) / mean(data_full$S >= thresh)
+#mean(data$wt * data$Y * (data$S >= thresh)) / mean(data$wt * (data$S >= thresh))
+}
+```
+
+
+0.005425500
+# confounding 
+```{r}
+library(simcausal)
+library(simcausal)
+D <- DAG.empty()
+D <- D +
+  node("W1", distr = "runif", min = -1, max = 1) +
+  node("W2", distr = "rnorm", mean = 0) +
+  node("W3full", distr = "rexp", rate = 1) +
+  node("W3", distr = "rconst", const = min(W3full,3))+
+  node("S", distr = "rgamma", shape = 2 + (W1) + abs(W2) + W3/3 ,rate= 12.5 + W1 + W2 + W3/3 ) +
+  node("g", distr = "rconst", const = dgamma(S, shape = 2 + (W1) + abs(W2) + W3/3 ,rate= 12.5 + W1 + W2 + W3/3 )) +
+  node("PY", distr = "rconst", const = 0.05 * logit(0.7*(0.5-7*S -2*(S >0.2) + W1+W2+2*W1*(W2 >0) - 2*W2*(W1>0) + W2*sin(3*W1) + W3 * (S-0.1) - W3*cos(3*W1)))) +
+  node("Y", distr = "rbinom", size =1, prob = PY)
+setD <- set.DAG(D, vecfun = "dgamma")
+data <- sim(setD, n = 80000)
+data
+hist(data$S)
+thresh <-0.2131749
+truth <- 0.005379507
+
+library(SuperLearner)
+CI_SL <- data.frame(matrix(NA, nrow = 1000, ncol = 3))
+covers_SL <- rep(NA,1000)
+
+CI_glmnet <- data.frame(matrix(NA, nrow = 1000, ncol = 3))
+covers_glmnet <- rep(NA,1000)
+
+CI_donovan<- data.frame(matrix(NA, nrow = 1000, ncol = 3))
+covers_donovan <- rep(NA,1000)
+library(simcausal)
+for( i in 1:1000) {
+n <- 10000
+D <- DAG.empty()
+D <- D +
+  node("W1", distr = "runif", min = -1, max = 1) +
+  node("W2", distr = "rnorm", mean = 0) +
+  node("W3full", distr = "rexp", rate = 1) +
+  node("W3", distr = "rconst", const = min(W3full,3))+
+  node("S", distr = "rgamma", shape = 2 + (W1) + abs(W2) + W3/3 ,rate= 12.5 + W1 + W2 + W3/3 ) +
+  node("g", distr = "rconst", const = dgamma(S, shape = 2 + (W1) + abs(W2) + W3/3 ,rate= 12.5 + W1 + W2 + W3/3 )) +
+  node("PY", distr = "rconst", const = 0.05 * logit(0.7*(0.5-7*S -2*(S >0.2) + W1+W2+2*W1*(W2 >0) - 2*W2*(W1>0) + W2*sin(3*W1) + W3 * (S-0.1) - W3*cos(3*W1)))) +
+  node("Y", distr = "rbinom", size =1, prob = PY)
+D <- set.DAG(D, vecfun = "dgamma")
+data_full <- sim(D, n = n)
+
+
+
+mean(data_full$PY)
+table(data_full$Y)
+p1 = 1
+p0= 0.15
+keep <- union(sample(which(data_full$Y==0), round(length(which(data_full$Y==0))*p0), replace = F) , sample(which(data_full$Y==1), round(length(which(data_full$Y==1))*p1), replace = F)  )
+
+data_full$select = as.numeric(seq_len(nrow(data_full)) %in% keep)
+table(data_full[data_full$Y==1, "Y"])
+data_full$wt <- 1/p0
+data_full[data_full$Y==1, "wt"] <- 1/p1
+data_full
+baseline <- c("W1", "W2", "W3")
+marker = "S"
+outcome = "Y"
+
+thresh <- median(data_full[[marker]]) 
+data <- data_full[data_full[["select"]] ==1,]
+
+bayesglm_sl_lrnr <- make_learner(Lrnr_pkg_SuperLearner, "SL.bayesglm", outcome_type = variable_type("binomial"))
+
+lrnr_SL.gam <-  make_learner(Lrnr_pkg_SuperLearner, "SL.gam", outcome_type = variable_type("binomial"))
+
+lrnr_SL.inter<-  make_learner(Lrnr_pkg_SuperLearner, "SL.glm.interaction", outcome_type = variable_type("binomial"))
+
+sl_list <- list(Lrnr_xgboost$new(max_depth = 4), Lrnr_xgboost$new(max_depth = 3), Lrnr_xgboost$new(max_depth = 5), Lrnr_xgboost$new(max_depth = 7), Lrnr_xgboost$new(eta = 0.1, max_depth  = 4), Lrnr_xgboost$new(eta = 0.1, max_depth  = 3) )
+
+sl_list <- c(sl_list,  list( bayesglm_sl_lrnr, lrnr_SL.inter, Lrnr_glmnet$new(), Lrnr_glm$new() ))
+lrnr <- Lrnr_sl$new(sl_list, Lrnr_cv_selector$new(loss_loglik_binomial))
+
+print("SL")
+
+est <- thresholdTMLE(data_full, list(W = baseline, Y = outcome, A  = marker, weights = "wt"), thresh , NULL,  biased_sampling_strata = "Y",  biased_sampling_indicator = "select", lrnr_A = lrnr, lrnr_Y = lrnr)
+
+se <- apply(est$upper[[1]]$IC_IPCW,2,sd)/sqrt(nrow(data_full))
+psi <- est$upper[[1]]$psi
+ci <- c(psi - 1.96*se, psi, psi + 1.96*se)
+CI_SL[i,] <- ci
+covers_SL[i] <- truth >= min(ci) &  truth <= max(ci)
+print(table(covers_SL))
+print(mean(covers_SL, na.rm = T))
+print(truth)
+print(ci)
+
+print("glmnet")
+sl_list <- list( bayesglm_sl_lrnr, lrnr_SL.inter, Lrnr_glmnet$new(), Lrnr_glm$new() )
+
+lrnr <- Lrnr_sl$new(sl_list, Lrnr_cv_selector$new(loss_loglik_binomial))
+
+est <- thresholdTMLE(data_full, list(W = baseline, Y = outcome, A  = marker, weights = "wt"), thresh , NULL,  biased_sampling_strata = "Y",  biased_sampling_indicator = "select", lrnr_A = lrnr, lrnr_Y = lrnr)
+
+se <- apply(est$upper[[1]]$IC_IPCW,2,sd)/sqrt(nrow(data_full))
+psi <- est$upper[[1]]$psi
+ci <- c(psi - 1.96*se, psi, psi + 1.96*se)
+CI_glmnet[i,] <- ci
+covers_glmnet[i] <- truth >= min(ci) &  truth <= max(ci)
+print(table(covers_glmnet))
+print(mean(covers_glmnet, na.rm = T))
+print(truth)
+print(ci)
+
+print("Donovan")
+est <- thresholdTMLE(data_full, list(W = baseline, Y = outcome, A  = marker, weights = "wt"), thresh , NULL,  biased_sampling_strata = "Y",  biased_sampling_indicator = "select", lrnr_A = Lrnr_mean$new(), lrnr_Y = Lrnr_mean$new())
+
+se <- apply(est$upper[[1]]$IC_IPCW,2,sd)/sqrt(nrow(data_full))
+psi <- est$upper[[1]]$psi
+ci <- c(psi - 1.96*se, psi, psi + 1.96*se)
+CI_donovan[i,] <- ci
+covers_donovan[i] <- truth >= min(ci) &  truth <= max(ci)
+print(table(covers_donovan))
+print(mean(covers_donovan, na.rm = T))
+print(truth)
+print(ci)
+
+#mean(data_full$Y * (data_full$S >= thresh)) / mean(data_full$S >= thresh)
+#mean(data$wt * data$Y * (data$S >= thresh)) / mean(data$wt * (data$S >= thresh))
+}
+```

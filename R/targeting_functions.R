@@ -1,4 +1,11 @@
-
+#'
+#' Targets the J component of the likelihood for the parameter of interest
+#' @param likelihoods The list of likelihood
+#' @param fits The list of learner fits the likelihood
+#' @param data The data in long format
+#' @param target_times The times at which to estimte the cumulative incidence
+#' @param node_list A list named list of nodes/variable dictionary
+#' @import stats
 target_J <- function(likelihoods, fits, data, target_times, node_list) {
   dNt <- as.numeric(data$Nt==1 & data$Event==1)
   Ct_left <- (data$Ct==1) - (data$Ct==1 & data$Event==1)
@@ -31,9 +38,9 @@ target_J <- function(likelihoods, fits, data, target_times, node_list) {
 
 
   for(i in 1:ncol(likelihoods$outcomes_J)) {
-    fit_J <- glm(Y~X-1, data = list(Y = likelihoods$outcomes_J[[i]], X = as.matrix(H*zero_by)), family = binomial(), weights = weights*zero_by, offset = stats::qlogis(bound(likelihoods$J[[i]],0.00001)))
+    fit_J <- stats::glm(Y~X-1, data = list(Y = likelihoods$outcomes_J[[i]], X = as.matrix(H*zero_by)), family = binomial(), weights = weights*zero_by, offset = stats::qlogis(bound(likelihoods$J[[i]],0.00001)))
 
-    eps <- coef(fit_J)
+    eps <- stats::coef(fit_J)
     epsilons_J[[i]] <- eps
     likelihoods$J[[i]] <- as.vector(stats::plogis(stats::qlogis(bound(likelihoods$J[[i]],0.00001)) + as.matrix(H) %*% eps))
 
@@ -49,7 +56,14 @@ target_J <- function(likelihoods, fits, data, target_times, node_list) {
   fits$EIC_J <- EIC_J * weights[data$t==1]
   return(list(fits = fits, likelihoods = likelihoods))
 }
-
+#'
+#' Updates the J component of the likelihood for the parameter of interest.
+#' Requires that the likelihood has already been targeted by a call to \code{target_J}
+#' @param likelihoods The list of likelihoods
+#' @param fits The list of learner fits the likelihood
+#' @param data The data in long format
+#' @param target_times The times at which to estimte the cumulative incidence
+#' @import stats
 update_J <- function(likelihoods, fits, data, target_times) {
   epsilons_J <- fits$epsilons_J
   if(is.null(epsilons_J)) {
@@ -79,7 +93,15 @@ update_J <- function(likelihoods, fits, data, target_times) {
 
 
 
-
+#' Performs one iteration of targeting for the N component of the likelihood for the parameter of interest.
+#' @param likelihoods The list of likelihoods
+#' @param fits The list of learner fits the likelihood
+#' @param data The data in long format
+#' @param target_times The times at which to estimte the cumulative incidence
+#' @param n_full_sample The total sample size (including those with missing A values)
+#' @param max_eps Max epsilon value to consider when performing MLE
+#' @param force_converge Forces convergence and computes EIF components. This is necessary if for whatever reason there is no convergence before the max number of iteratons.
+#' @import stats
 target_N <- function(data, likelihoods, fits, node_list, target_times, n_full_sample = NULL, max_eps = NULL, force_converge = FALSE) {
   if(!is.null(fits$max_eps)) {
     max_eps <- fits$max_eps
@@ -204,6 +226,15 @@ target_N <- function(data, likelihoods, fits, node_list, target_times, n_full_sa
   return(list(fits = fits, likelihoods = likelihoods, converged = F))
 }
 
+#' Performs one iteration of targeting for the N component of the likelihood for the parameter of interest.
+#' Requires that the likelihood has already been targeted by a call to \code{target_N}
+#' @param likelihoods The list of likelihoods
+#' @param fits The list of learner fits the likelihood
+#' @param data The data in long format
+#' @param target_times The times at which to estimte the cumulative incidence
+#' @param node_list A list named list of nodes/variable dictionary
+#' @param step Step number
+#' @import stats
 update_N <- function(data, likelihoods, fits, node_list, target_times, step) {
   nt <- max(data$t)
   survs <- compute_survival_functions(likelihoods, nt)
@@ -236,6 +267,19 @@ update_N <- function(data, likelihoods, fits, node_list, target_times, step) {
   return(likelihoods)
 }
 
+#' Performs the sequential regression targeting step for the threshold
+#' @param likelihoods The list of likelihoods
+#' @param fits The list of learner fits the likelihood
+#' @param data The data in long format
+#' @param data_orig The data in short format
+#' @param data_full The data in short format including everyone with missing A values
+#' @param target_times The times at which to estimte the cumulative incidence
+#' @param node_list A list named list of nodes/variable dictionary
+#' @param biased_sampling_group The variable name for the biased sampling group
+#' @param biased_sampling_indicator The variable name for the Indicator whether you are selected by the biased sample
+#' @param fast_analysis Whether to use a shortcut for a faster analysis
+#' @import stats
+#' @importFrom zoo rollapply
 sequential_targeting <- function(data, data_orig, data_full, fits, likelihoods, target_times, node_list, n_full_sample = NULL, biased_sampling_group = NULL, biased_sampling_indicator = NULL, fast_analysis = F) {
   nt <- max(data$t)
   n <- nrow(data_orig)
@@ -379,6 +423,19 @@ sequential_targeting <- function(data, data_orig, data_full, fits, likelihoods, 
   return(psi_list_t)
 }
 
+#' Performs the sequential regression targeting step for the threshold
+#' @param likelihoods The list of likelihoods
+#' @param fits The list of learner fits the likelihood
+#' @param data The data in long format
+#' @param data_orig The data in short format
+#' @param data_full The data in short format including everyone with missing A values
+#' @param target_times The times at which to estimte the cumulative incidence
+#' @param node_list A list named list of nodes/variable dictionary
+#' @param biased_sampling_group The variable name for the biased sampling group
+#' @param biased_sampling_indicator The variable name for the Indicator whether you are selected by the biased sample
+#' @param fast_analysis Whether to use a shortcut for a faster analysis
+#' @import stats
+#' @importFrom zoo rollapply
 Fixed_treatment_targeting <-  function(data, data_orig, data_full, fits, likelihoods, target_times, node_list, n_full_sample = NULL, biased_sampling_group = NULL, biased_sampling_indicator = NULL, fast_analysis = F) {
   nt <- max(data$t)
   n <- nrow(data_orig)

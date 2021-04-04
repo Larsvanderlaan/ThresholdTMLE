@@ -36,12 +36,12 @@ hist(data_sim$T[data_sim$A>= 0.5])
 ```{r}
  
 #remotes::install_github("tlverse/tmle3sim")
-#set.seed(1069583)
+set.seed(1069583)
  estimates<-list()
  outcome <- c()
 
-#for(i in 1:100) {
-  #try({
+for(i in 1:100) {
+  try({
    #data <- as.data.table(simulate(2000, censoring = TRUE))
   #data_sim <- as.data.table(simulate(25000, censoring = F))
     data_full <- as.data.table(simulate(3000, censoring = TRUE))
@@ -62,18 +62,32 @@ hist(data_sim$T[data_sim$A>= 0.5])
                             max_eps =1e-1, split_by_J = T, max_iter = 100, fast_analysis = T)
   
   est <- output1$estimates$`t=7`[[1]]$psi
-  radius <- 1.96*sd(c(rep(0, 1000),output1$estimates$`t=7`[[1]]$EIC))/sqrt(nrow(data_full))
+  radius <- 1.96*sd(output1$estimates$`t=7`[[1]]$EIC)/sqrt(nrow(data_full))
   estimates[[i]] <- c(est, est-radius, est + radius)
   outcome <- c(outcome, (true <=  est + radius) *(est - radius <= true))
   
   print(estimates[[i]])
   print(table(outcome))
-  mean(outcome)
-  #})
-#}
+  print(mean(outcome))
+  })
+}
 
 
 ```
+
+
+```{r}
+item <- output1$estimates$`t=7`[[1]]
+dim(item$EIC)
+2*sd(item$EIC)/sqrt((3000))
+item$psi
+true
+sd(item$EIC_IPW)
+sd(item$EIC)
+sd(item$EIC_IPW + (item$EIC - item$EIC_IPW))
+```
+
+
 
 
 ```{r}

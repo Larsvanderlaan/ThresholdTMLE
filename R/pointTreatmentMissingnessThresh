@@ -14,7 +14,7 @@
 #' @param Lrnr_Delta An \code{sl3} package binomial Learner for estimating the probability distribution of the missingness mechanism  (make sure it supports weights if needed)
 #' Note that default of all learners is lasso using glmnet.
 #' @return Returns a matrix  with estimates, CI, and simultaneous CI
-
+#' @export
 pointTreatmentInformativeMissingnessThresh <- function(data_full, node_list, thresholds, biased_sampling_strata = NULL, biased_sampling_indicator = NULL, lrnr_A = Lrnr_glmnet$new(), lrnr_Y = Lrnr_glmnet$new(), lrnr_Delta = Lrnr_glmnet$new()) {
   upper_list <- list()
   lower_list <- list()

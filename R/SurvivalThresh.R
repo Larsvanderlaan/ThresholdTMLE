@@ -1,22 +1,34 @@
 
-
-process_data <- function(data, covariates, trt = "A", Ttilde = "Ttilde", Delta = "Delta", J = "J", weights = NULL) {
-  node_list <- list(W = covariates, A = "A", weights = "weights", "J" = "J", Delta = "Delta", Ttilde = "Ttilde")
-  data_new <- data.table( A = data[[trt]], Ttilde = data[[Ttilde]], Delta = data[[Delta]], J = data[[J]])
-  set(data_new,, covariates, data[, covariates, with = F])
-
-  if(!is.null(weights)) {
-    data_new$weights <- data[[weights]]
-  } else {
-    data_new$weights <- 1
-  }
-  data <- data_new
-  data$id <- as.factor(1:nrow(data))
-  rm(data_new)
-  return(list(data = data, node_list = node_list))
-}
-
-survivalThresh <- function(data, covariates, trt = "A", Ttilde = "Ttilde", Delta = "Delta", J = "J", weights = NULL, biased_sampling_indicator = NULL,  biased_sampling_group = NULL, cutoffs_A, cutoffs_J, target_times, lrnr = Lrnr_glmnet$new(), lrnr_A = lrnr, lrnr_C = lrnr, lrnr_N = lrnr, lrnr_J = lrnr, ngrid_A = 25, type_A = c("above", "below", "equal"), type_J = c("above", "below", "equal"), split_by_J = TRUE, max_eps = 0.05, max_iter = 100, fast_analysis = F, verbose = TRUE) {
+#' @param data A data.frame or data.table containing the data.
+#' This should contain all data including those with missing "A" variable.
+#' @param covariates A vector of covariate names in \code{data} (i.e. the "W" node)
+#' @param trt Treatment variable name (i.e. the "A" node)
+#' @param Ttilde Time-to-event or censoring variable Ttilde  (i.e. the "Ttilde" node)
+#' @param Delta Variable name for indicator of being not censored  (i.e. the "Delta" node)
+#' @param J Variable name for mark/type of event  (i.e. the "J" node)
+#' @param weights Variable name storing the IPW weights for the missing treatment/"A" values. Can be NULL.
+#' If \code{biased_sampling_indicator} and \code{biased_sampling_group} are specifyed then the weights will be estimated using NPMLE.
+#' @param biased_sampling_indicator
+#' @param biased_sampling_group
+#' @param cutoffs_A
+#' @param cutoffs_J
+#' @param target_times
+#' @param lrnr
+#' @param lrnr_A
+#' @param lrnr_C
+#' @param lrnr_N
+#' @param lrnr_J
+#' @param lrnr_A
+#' @param ngrid_A
+#' @param type_A
+#' @param type_J
+#' @param split_by_J
+#' @param max_eps
+#' @param max_iter
+#' @param fast_analysis
+#' @param verbose
+#' @export
+survivalThresh <- function(data, covariates, trt = "A", Ttilde = "Ttilde", Delta = "Delta", J = "J", biased_sampling_indicator = NULL,  biased_sampling_group = NULL, weights = NULL, cutoffs_A, cutoffs_J, target_times, lrnr = Lrnr_glmnet$new(), lrnr_A = lrnr, lrnr_C = lrnr, lrnr_N = lrnr, lrnr_J = lrnr, ngrid_A = 25, type_A = c("above", "below", "equal"), type_J = c("above", "below", "equal"), split_by_J = TRUE, max_eps = 0.05, max_iter = 100, fast_analysis = F, verbose = TRUE) {
   data <- as.data.table(data)
   n_full_sample <- nrow(data)
   data_full <- data
@@ -39,8 +51,7 @@ survivalThresh <- function(data, covariates, trt = "A", Ttilde = "Ttilde", Delta
   data_full <- processed$data
   data_full[[biased_sampling_indicator]] <- data[[biased_sampling_indicator]]
   data_full[[biased_sampling_group]] <- data[[biased_sampling_group]]
-  print(dim(data_full))
-  print(dim(data))
+
 
   node_list <- processed$node_list
   if(!is.null(biased_sampling_indicator)) {
@@ -213,3 +224,26 @@ survivalThresh <- function(data, covariates, trt = "A", Ttilde = "Ttilde", Delta
 
 
 }
+
+
+
+
+
+
+
+process_data <- function(data, covariates, trt = "A", Ttilde = "Ttilde", Delta = "Delta", J = "J", weights = NULL) {
+  node_list <- list(W = covariates, A = "A", weights = "weights", "J" = "J", Delta = "Delta", Ttilde = "Ttilde")
+  data_new <- data.table( A = data[[trt]], Ttilde = data[[Ttilde]], Delta = data[[Delta]], J = data[[J]])
+  set(data_new,, covariates, data[, covariates, with = F])
+
+  if(!is.null(weights)) {
+    data_new$weights <- data[[weights]]
+  } else {
+    data_new$weights <- 1
+  }
+  data <- data_new
+  data$id <- as.factor(1:nrow(data))
+  rm(data_new)
+  return(list(data = data, node_list = node_list))
+}
+
