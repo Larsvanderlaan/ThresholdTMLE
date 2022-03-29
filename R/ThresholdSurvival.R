@@ -37,8 +37,8 @@
 ThresholdSurvival <- function(data, covariates, trt = "A", Ttilde = "Ttilde", Delta = "Delta",   biased_sampling_indicator = NULL, weights_var, cutoffs_A, target_times,  lrnr_A , lrnr_C , lrnr_N ,  ngrid_A = 30,  monotone_decreasing = T) {
 
   data$J123 <- 1
-  suppressMessages({survivalThresh(data, covariates, trt = trt, Ttilde = Ttilde, Delta = Delta, J = "J123", biased_sampling_indicator = biased_sampling_indicator,  biased_sampling_group = NULL, weights_var = weights_var, cutoffs_A = cutoffs_A, cutoffs_J = 1, target_times = target_times, lrnr = lrnr, lrnr_A = lrnr_A, lrnr_C = lrnr_C, lrnr_N = lrnr_N, lrnr_J = Lrnr_glm$new(), ngrid_A = 25, type_J = c("above", "below", "equal"), max_eps = 0.25, max_iter = 50,  verbose = FALSE, monotone_decreasing = T)
-  })
+  suppressWarnings({suppressMessages({survivalThresh(data, covariates, trt = trt, Ttilde = Ttilde, Delta = Delta, J = "J123", biased_sampling_indicator = biased_sampling_indicator,  biased_sampling_group = NULL, weights_var = weights_var, cutoffs_A = cutoffs_A, cutoffs_J = 1, target_times = target_times, lrnr = lrnr, lrnr_A = lrnr_A, lrnr_C = lrnr_C, lrnr_N = lrnr_N, lrnr_J = Lrnr_glm$new(), ngrid_A = 25, type_J = c("above", "below", "equal"), max_eps = 0.25, max_iter = 50,  verbose = FALSE, monotone_decreasing = T)
+  })})
 }
 
 #' Takes a dataset with continuous time-to-event variables and target times at which to estimate the threshold-response cumulative incidence
