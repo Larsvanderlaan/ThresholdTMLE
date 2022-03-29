@@ -1,0 +1,84 @@
+---
+title: "Example"
+output: html_document
+date: '2022-03-29'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+```{r}
+# Sample size
+n <- 500
+# Baseline variables
+W1 <- runif(n, -1 ,1)
+W2 <- runif(n, -1 ,1)
+# Treatment
+A <- rnorm(n,  mean = -0.6*W1, sd = 0.3)
+hist(A)
+# Time to event
+Tt <- pmin(rweibull(n, scale = 2,  shape = exp(0.5*(W1 + W2 - A))),15)
+hist(Tt)
+# Time to censoring
+Ct <- pmin(rweibull(n, scale = 3,  shape = exp(0.5*(W1 + W2 -A))),15)
+hist(Ct)
+
+# Observed event-time variables. Ttilde and Delta.
+Ttilde <- pmin(Tt, Ct)
+Delta <- as.numeric(Tt <= Ct)
+
+# Biased sampling indicator
+R <- rbinom(n, size  =1, prob = plogis(W1))
+A[R==0] <- NA
+pR_fit <- glm.fit(cbind(1,W1), R, family = binomial())
+# Estimate of biased sampling probability
+pR_est <- plogis(cbind(1,W1) %*% coef(pR_fit)) 
+# estimated IPW weights
+weights <- 1 / pR_est
+
+data <- data.frame(W1, W2, A, Ttilde, Delta, R, weights)
+
+```
+
+
+
+```{r}
+# Get discrete time dataset
+target_times <- 10
+data_discrete_list <- discretize_time(data, "Ttilde", biased_sampling_indicator = "R", target_times = target_times)
+# Get discretized data and new target times
+data_discrete <- data_discrete_list$data_discrete
+target_times_discrete <- data_discrete_list$target_times_discrete
+head(data_discrete)
+print(target_times_discrete)
+```
+
+
+```{r}
+# Thresholds of treatment at which to estimate cumulative incidence
+cutoffs_A <- quantile(na.omit(data$A), seq(0.05, 0.95, length = 10))
+
+lrnr <- Pipeline$new(Lrnr_cv$new(Stack$new(
+  Lrnr_hal9001$new(smoothness_orders = 0, max_degree = 1, num_knots = c(30,10)),
+  Lrnr_gam$new(),
+  Lrnr_glmnet$new(),
+  Lrnr_earth$new(),
+  Lrnr_xgboost$new(max_depth = 5),
+  Lrnr_xgboost$new(max_depth = 4)
+)), Lrnr_cv_selector$new())
+
+out <- ThresholdSurvival(as.data.table(data_discrete), 
+                         covariates = c("W1", "W2"), 
+                         target_times = target_times_discrete,
+                         cutoffs_A = cutoffs_A,  
+                         lrnr_A = lrnr, lrnr_N = lrnr, 
+                         lrnr_C = lrnr, 
+                         biased_sampling_indicator = "R", 
+                         weights_var = "weights" )
+
+
+
+```

@@ -1,0 +1,83 @@
+---
+title: "Untitled"
+output: html_document
+date: '2022-03-29'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+```{r}
+library(simcausal)
+library(sl3)
+library(data.table)
+passes_surv_list <- list()
+passes_list <- list()
+for(i in 1:100){
+D <- DAG.empty()
+D <- D +
+  node("W1", distr = "runif", min = 0, max = 1) +
+  node("W2", distr = "rbinom", size = 1, prob = 1/2) +
+  node("W3", distr = "rbinom", size = 1, prob = 1/3) +
+   node("A", distr = "rnorm", mean = -0.6*W1, sd = 0.3) + 
+ 
+  node("dN", distr = "rbinom", size =1 , prob = 0.015 *plogis(-1 + t/12 + - 1.3*A*(1+t/12) - exp( A) - 2*A^2 + W1 - 0.5*A*W3/2 + (1)*W2), t = 1:15, EFU = T)  +
+   node("dC", distr = "rbinom", size =1 , prob = 0.01, t = 1:15, EFU = T)  
+  
+setD <- set.DAG(D)
+ 
+data <-suppressMessages( sim(setD, n = 15000))
+Ts <- apply(data[,grep("dN_.",colnames(data))],1,function(dNt){
+  t <- which(dNt==1)
+  if(length(t)==0){
+    t <- 16
+  }
+  t
+})
+Cs <- apply(data[,grep("dC_.",colnames(data))],1,function(dCt){
+  t <- which(dCt==1)
+  if(length(t)==0){
+    t <- 15
+  }
+  t
+})
+data$T <- Ts
+data$C <- Cs
+data$Ttilde <- pmin(data$T,data$C)
+data$Delta <- as.numeric(data$T <= data$C)
+data$J <-1
+ 
+data <- data[, c("W1", "W2", "W3", "A", "Ttilde", "Delta","J")]
+data$R <- rbinom(nrow(data), size = 1, prob = data$Delta + 0.05*(1-data$Delta)*(data$W1 <= 0.5) + 0.1*(1-data$Delta)*(data$W1 > 0.5))
+data$grp <- "cases"
+data$weights <- mean(data$R[data$Delta ==1])
+data$grp[data$Delta ==0 & data$W1 <= 0.5] <- "W1<=0"
+data$weights[data$Delta ==0 & data$W1 <= 0.5] <- mean(data$R[data$Delta ==0 & data$W1 <= 0.5])
+data$grp[data$Delta ==0 & data$W1 > 0.5] <- "W1>0"
+data$weights[data$Delta ==0 & data$W1 > 0.5] <- mean(data$R[data$Delta ==0 & data$W1 > 0.5])
+data$weights <- 1/data$weights
+
+
+true7 <- c( 0.09213830, 0.08027099)
+true8 <- c( 0.10016381 , 0.08774883)
+
+lrnr <-  Lrnr_hal9001$new(smoothness_orders=1, num_knots = c(3,1), max_degree =2)
+ 
+cutoffs <- c(-0.3884028 ,-0.2118464)
+out <- ThresholdSurvival(as.data.table(data), covariates = c("W1", "W2", "W3"), target_times = c(14,15),cutoffs_A = cutoffs,  lrnr =lrnr, biased_sampling_indicator = "R", weights_var = "weights" )
+passes_surv <- c(true7 >= out[[1]]$output[,4] & true7 <= out[[1]]$output[,5],
+            
+            true8 >= out[[2]]$output[,4] & true8 <= out[[2]]$output[,5]
+            )
+passes_surv_list[[i]] <- passes_surv
+  
+print(apply(do.call(cbind, passes_surv_list), 1, mean))
+ 
+}
+
+
+
+```

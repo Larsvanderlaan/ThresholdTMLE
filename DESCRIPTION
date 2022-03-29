@@ -1,0 +1,24 @@
+Package: ThresholdTMLE
+Type: Package
+Title: Estimation of the threshold-response cumulative incidence
+Version: 0.1.0
+Author: Lars van der Laan
+Maintainer: Lars van der Laan <vanderlaanlars@yahoo.com>
+Description: Provides nonparametric estimates and efficient inference for E_W[P(T <= t | A= a, W)]
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.2
+Imports: 
+  sl3,
+  hal9001,
+  stats,
+  data.table,
+  R6
+Depends:
+  sl3,
+  hal9001,
+  stats,
+  data.table,
+  R6
+Remotes: github::tlverse/hal9001@master, github::tlverse/sl3@master
