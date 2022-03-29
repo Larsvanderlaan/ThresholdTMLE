@@ -9,8 +9,16 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
+```{r}
+# Install
+devtools::install_github("Larsvanderlaan/ThresholdTMLE")
+
+ 
+```
+
 
 ```{r}
+library(ThresholdTMLE)
 # Sample size
 n <- 500
 # Baseline variables

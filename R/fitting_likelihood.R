@@ -70,7 +70,7 @@ fit_likelihood <- function(data, node_list, grid_A, cutoffs_A, cutoffs_J, type_A
 }
 
 
-get_likelihoods <- function(fits, data, node_list, unexpanded_likelihood = NULL) {
+get_likelihoods <- function(fits, data, node_list, unexpanded_likelihood = NULL, verbose = FALSE) {
   nt <- max(data$t)
   n <- nrow(data)/nt
   lrnrs_J <- fits$J
