@@ -26,7 +26,7 @@ ThresholdSurvival(
     15)),
   lrnr_C = Lrnr_hal9001$new(smoothness_orders = 0, max_degree = 2, num_knots = c(30,
     15)),
-  lrnr_N = Lrnr_hal9001$new(smoothness_orders = 0, max_degree = 2, num_knots = c(30,
+  lrnr_T = Lrnr_hal9001$new(smoothness_orders = 0, max_degree = 2, num_knots = c(30,
     15)),
   ngrid_A = 25,
   monotone_decreasing = T
@@ -61,7 +61,7 @@ For instance, this variable could correspond with IPW weights used to adjust for
 
 \item{lrnr_C}{A \code{tlverse/sl3} \code{sl3_Learner} object for binary outcomes that is used to estimate the conditional censoring hazard function using pooled logistic regression.}
 
-\item{lrnr_N}{A \code{tlverse/sl3} \code{sl3_Learner} object for binary outcomes that is used to estimate the conditional event hazard function using pooled logistic regression.}
+\item{lrnr_T}{A \code{tlverse/sl3} \code{sl3_Learner} object for binary outcomes that is used to estimate the conditional event hazard function using pooled logistic regression.}
 
 \item{ngrid_A}{(Internal use) The number of bins used when discretizing the continuous treatment for density estimation.}
 

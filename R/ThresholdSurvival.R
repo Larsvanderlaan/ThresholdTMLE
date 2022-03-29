@@ -30,13 +30,13 @@
 #' @param target_times A numeric vector of time-points at which to estimate the cumulative incidence.
 #' @param lrnr_A A \code{tlverse/sl3} \code{sl3_Learner} object for binary outcomes that is used to estimate the conditional density of the treatment using discretization and pooled logistic regression.
 #' @param lrnr_C A \code{tlverse/sl3} \code{sl3_Learner} object for binary outcomes that is used to estimate the conditional censoring hazard function using pooled logistic regression.
-#' @param lrnr_N A \code{tlverse/sl3} \code{sl3_Learner} object for binary outcomes that is used to estimate the conditional event hazard function using pooled logistic regression.
+#' @param lrnr_T A \code{tlverse/sl3} \code{sl3_Learner} object for binary outcomes that is used to estimate the conditional event hazard function using pooled logistic regression.
 #' @param ngrid_A (Internal use) The number of bins used when discretizing the continuous treatment for density estimation.
 #' @param monotone_decreasing Whether the monotone corrected estimates of the threshold-response cumulative incidence should be monotone decreasing or monotone increasing.
 #' @export
-ThresholdSurvival <- function(data, covariates, trt = "A", Ttilde = "Ttilde", Delta = "Delta",   biased_sampling_indicator = NULL, weights_var, cutoffs_A, target_times,  lrnr_A = Lrnr_hal9001$new(smoothness_orders = 0, max_degree = 2, num_knots = c(30,15)) , lrnr_C = Lrnr_hal9001$new(smoothness_orders = 0, max_degree = 2, num_knots = c(30,15)) , lrnr_N = Lrnr_hal9001$new(smoothness_orders = 0, max_degree = 2, num_knots = c(30,15)) ,  ngrid_A = 25,  monotone_decreasing = T) {
+ThresholdSurvival <- function(data, covariates, trt = "A", Ttilde = "Ttilde", Delta = "Delta",   biased_sampling_indicator = NULL, weights_var, cutoffs_A, target_times,  lrnr_A = Lrnr_hal9001$new(smoothness_orders = 0, max_degree = 2, num_knots = c(30,15)) , lrnr_C = Lrnr_hal9001$new(smoothness_orders = 0, max_degree = 2, num_knots = c(30,15)) , lrnr_T = Lrnr_hal9001$new(smoothness_orders = 0, max_degree = 2, num_knots = c(30,15)) ,  ngrid_A = 25,  monotone_decreasing = T) {
 
   data$J123 <- 1
-  suppressWarnings({suppressMessages({survivalThresh(data, covariates, trt = trt, Ttilde = Ttilde, Delta = Delta, J = "J123", biased_sampling_indicator = biased_sampling_indicator,  biased_sampling_group = NULL, weights_var = weights_var, cutoffs_A = cutoffs_A, cutoffs_J = 1, target_times = target_times, lrnr = lrnr, lrnr_A = lrnr_A, lrnr_C = lrnr_C, lrnr_N = lrnr_N, lrnr_J = Lrnr_glm$new(), ngrid_A = 25, type_J = c("above", "below", "equal"), max_eps = 0.25, max_iter = 50,  verbose = FALSE, monotone_decreasing = T)
+  suppressWarnings({suppressMessages({survivalThresh(data, covariates, trt = trt, Ttilde = Ttilde, Delta = Delta, J = "J123", biased_sampling_indicator = biased_sampling_indicator,  biased_sampling_group = NULL, weights_var = weights_var, cutoffs_A = cutoffs_A, cutoffs_J = 1, target_times = target_times, lrnr = lrnr, lrnr_A = lrnr_A, lrnr_C = lrnr_C, lrnr_N = lrnr_T, lrnr_J = Lrnr_glm$new(), ngrid_A = 25, type_J = c("above", "below", "equal"), max_eps = 0.25, max_iter = 50,  verbose = FALSE, monotone_decreasing = T)
   })})
 }

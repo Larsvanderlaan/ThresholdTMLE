@@ -86,7 +86,7 @@ out <- ThresholdSurvival(as.data.table(data_discrete),
                          covariates = c("W1", "W2"), 
                          target_times = target_times_discrete,
                          cutoffs_A = cutoffs_A,  
-                         lrnr_A = lrnr, lrnr_N = lrnr, 
+                         lrnr_A = lrnr, lrnr_T = lrnr, 
                          lrnr_C = lrnr, 
                          biased_sampling_indicator = "R", 
                          weights_var = "weights" )
