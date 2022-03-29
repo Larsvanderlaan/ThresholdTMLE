@@ -79,7 +79,7 @@ plot_threshold_response <- function(output, simultaneous_CI = T, monotone = F) {
       theme(
         text = element_text(size = 20),
         axis.text.x = element_text(angle = 45, hjust = 1)
-      ) + ylab("EWE[Y|A>=v, W]") + xlab("Threshold")
+      ) + ylab("Cumulative incidence") + xlab("Threshold")
     g1 <- g1 + ggtitle(title) + labs(subtitle = subtitle) + theme(plot.title = element_text(size = 15), plot.subtitle = element_text(size = 13))
   } else {
     g1 <- NULL
