@@ -51,6 +51,7 @@ ThresholdSurvival <- function(data, covariates, trt = "A", Ttilde = "Ttilde", De
 #' The indicator should take the value `1` if the treatment is observed and `0` otherwise.
 #' This parameter combined with the weight parameter \code{weights_var} allows this method to be used with biased sampling designs.
 #' @param target_times A numeric vector of time-points at which to estimate the cumulative incidence.
+#' @export
 discretize_time <- function(data, Ttilde, biased_sampling_indicator = NULL, target_times) {
   if(is.null(biased_sampling_indicator)) {
     R <- 1

@@ -3,6 +3,7 @@
 export(Lrnr_pooled_hazards)
 export(Lrnr_pooled_hazards_fixed)
 export(ThresholdSurvival)
+export(discretize_time)
 export(dt_expand_factors)
 export(factor_to_indicators)
 export(pack_predictions)
