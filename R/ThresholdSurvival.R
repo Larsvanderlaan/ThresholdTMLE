@@ -51,8 +51,9 @@ ThresholdSurvival <- function(data, covariates, trt = "A", Ttilde = "Ttilde", De
 #' The indicator should take the value `1` if the treatment is observed and `0` otherwise.
 #' This parameter combined with the weight parameter \code{weights_var} allows this method to be used with biased sampling designs.
 #' @param target_times A numeric vector of time-points at which to estimate the cumulative incidence.
+#' @param nbins_t The number of bins to use for discretizing time. The recommended value is 20-30.
 #' @export
-discretize_time <- function(data, Ttilde, biased_sampling_indicator = NULL, target_times) {
+discretize_time <- function(data, Ttilde, biased_sampling_indicator = NULL, target_times, nbins_t = 25) {
   if(is.null(biased_sampling_indicator)) {
     R <- 1
   } else {
@@ -62,7 +63,7 @@ discretize_time <- function(data, Ttilde, biased_sampling_indicator = NULL, targ
   upper_t <- max(target_times)
   # Discretize continuous times
   # Number of bins to use in time discretization
-  nbins_t <- 25
+
   # The discrete grid of times (equally spaced on quantile scale)
   time_grid <- unique(sort(quantile(data[["Ttilde"]][data[["Ttilde"]] <= upper_t + 1 & R ==1  ], seq(0,1, length = nbins_t))))
   # Make sure target times appear in time grid
