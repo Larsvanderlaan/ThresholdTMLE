@@ -70,6 +70,7 @@ lrnr <- Pipeline$new(Lrnr_cv$new(Stack$new(
   Lrnr_xgboost$new(max_depth = 4)
 )), Lrnr_cv_selector$new())
 
+lrnr <-  Lrnr_glmnet$new()
 out <- ThresholdSurvival(as.data.table(data_discrete), 
                          covariates = c("W1", "W2"), 
                          target_times = target_times_discrete,
