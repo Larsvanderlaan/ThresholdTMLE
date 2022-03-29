@@ -22,10 +22,13 @@ ThresholdSurvival(
   weights_var,
   cutoffs_A,
   target_times,
-  lrnr_A,
-  lrnr_C,
-  lrnr_N,
-  ngrid_A = 30,
+  lrnr_A = Lrnr_hal9001$new(smoothness_orders = 0, max_degree = 2, num_knots = c(30,
+    15)),
+  lrnr_C = Lrnr_hal9001$new(smoothness_orders = 0, max_degree = 2, num_knots = c(30,
+    15)),
+  lrnr_N = Lrnr_hal9001$new(smoothness_orders = 0, max_degree = 2, num_knots = c(30,
+    15)),
+  ngrid_A = 25,
   monotone_decreasing = T
 )
 }
