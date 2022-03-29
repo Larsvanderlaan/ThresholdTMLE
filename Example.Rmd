@@ -56,10 +56,7 @@ data <- data.frame(W1, W2, A, Ttilde, Delta, R, weights)
 ```{r}
 # Get discrete time dataset
 target_times <- 10
-# Number of bins to discretiz time
-nbins_t = 25
-# Get discrete data
-data_discrete_list <- discretize_time(data, "Ttilde", biased_sampling_indicator = "R", target_times = target_times, nbins_t = nbins_t)
+data_discrete_list <- discretize_time(data, "Ttilde", biased_sampling_indicator = "R", target_times = target_times)
 # Get discretized data and new target times
 data_discrete <- data_discrete_list$data_discrete
 target_times_discrete <- data_discrete_list$target_times_discrete
@@ -86,11 +83,18 @@ out <- ThresholdSurvival(as.data.table(data_discrete),
                          covariates = c("W1", "W2"), 
                          target_times = target_times_discrete,
                          cutoffs_A = cutoffs_A,  
-                         lrnr_A = lrnr, lrnr_T = lrnr, 
+                         lrnr_A = lrnr, lrnr_N = lrnr, 
                          lrnr_C = lrnr, 
                          biased_sampling_indicator = "R", 
                          weights_var = "weights" )
 
 
 
+```
+
+
+```{r}
+
+data.frame(out$output)
+plot_threshold_response(out$output, simultaneous_CI = FALSE, monotone = FALSE)
 ```
