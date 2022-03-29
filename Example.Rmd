@@ -56,7 +56,10 @@ data <- data.frame(W1, W2, A, Ttilde, Delta, R, weights)
 ```{r}
 # Get discrete time dataset
 target_times <- 10
-data_discrete_list <- discretize_time(data, "Ttilde", biased_sampling_indicator = "R", target_times = target_times)
+# Number of bins to discretiz time
+nbins_t = 25
+# Get discrete data
+data_discrete_list <- discretize_time(data, "Ttilde", biased_sampling_indicator = "R", target_times = target_times, nbins_t = nbins_t)
 # Get discretized data and new target times
 data_discrete <- data_discrete_list$data_discrete
 target_times_discrete <- data_discrete_list$target_times_discrete
