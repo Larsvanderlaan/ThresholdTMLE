@@ -12,7 +12,14 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 ```{r}
+if(!require(sl3)) {
+  devtools::install_github("tlverse/sl3", ref = "devel")
+}
+if(!require(ThresholdTMLE)) {
+  devtools::install_github("Larsvanderlaan/ThresholdTMLE")
+}
 library(sl3)
+library(ThresholdTMLE)
 
  
 n <- 1000
@@ -29,12 +36,20 @@ T_inf <- ceiling(rexp(n, rate = 0.1))
 # Discrete time to censoring/loss-of-follow-up variable
 C <-  ceiling(rexp(n, rate = 0.05))
 
-# Censoring indicator: takes value 1 if infection is observed and 0 otherwise.
-Delta <- as.numeric(C > T_inf)
+ 
 
 # Binary outcome defined as indicator of being infected before a given reference time
 t_ref <- median(T_inf)
 Y <- as.numeric(T_inf <= t_ref)
+
+
+# Censoring indicator: takes value 1 if infection is observed before reference time and 0 otherwise.
+# This wastes a lot of data as individuals who are censored before t_ref are 
+# treated as fully missing.
+# Survival version of this estimator is more efficient.
+# t_ref should be chosen carefully.
+Delta <- as.numeric(C >= t_ref)
+Y <- Delta * Y
 
 #  Thresholds for biomarker
 thresholds <-quantile(A, c(0.1, 0.3, 0.5, 0.7, 0.9))
