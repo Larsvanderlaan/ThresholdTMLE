@@ -1,6 +1,6 @@
 
 #' @export
-plot_threshold_response <- function(output, simultaneous_CI = T, monotone = F) {
+plot_threshold_response <- function(output, simultaneous_CI = F, monotone = F) {
   estimates <- output
   if (simultaneous_CI) {
     lower_index <- 6

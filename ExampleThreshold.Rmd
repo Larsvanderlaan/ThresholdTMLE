@@ -1,0 +1,71 @@
+---
+title: "help"
+output: html_document
+date: '2023-04-10'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+
+```{r}
+library(sl3)
+
+ 
+n <- 1000
+# Baseline variable
+W1 <- runif(n =  n, min = -1, max = 1)
+W2 <- runif(n =  n, min = -1, max = 1)
+W <- as.matrix(data.frame(W1 = W1, W2 = W2))
+# continuous treatment/biomarker/immune response
+A <- rnorm(n, mean = (W), sd = 0.2)
+
+# Discrete time to event variable
+T_inf <- ceiling(rexp(n, rate = 0.1))
+
+# Discrete time to censoring/loss-of-follow-up variable
+C <-  ceiling(rexp(n, rate = 0.05))
+
+# Censoring indicator: takes value 1 if infection is observed and 0 otherwise.
+Delta <- as.numeric(C > T_inf)
+
+# Binary outcome defined as indicator of being infected before a given reference time
+t_ref <- median(T_inf)
+Y <- as.numeric(T_inf <= t_ref)
+
+#  Thresholds for biomarker
+thresholds <-quantile(A, c(0.1, 0.3, 0.5, 0.7, 0.9))
+
+# If there is biomarker missingness in A due to e.g. two-stage sampling then these should be inverse probability of sampling weights.
+weights <-  rep(1, n)
+# Run threshold analysis
+results <- tmleThreshold.auto(thresholds, W = W, A = A, Y = Y, Delta = Delta, weights =weights)
+print(head(results))
+
+# Plot isotonic/monotone-corrected threshold response curve
+library(ggplot2)
+plot_data <- data.frame(
+      cutoffs = results$threshold, est = results$psi_mono,
+      lower = results$CI_left_mono,
+      upper = results$CI_right_mono
+    )
+    plot <- ggplot2::ggplot(data = plot_data, aes_string("cutoffs", "est")) +
+      scale_x_continuous(breaks = plot_data$cutoffs) +
+      geom_line() +
+      geom_ribbon(aes(ymin = lower, ymax = upper), alpha = 0.3, color = NA)
+
+    plot <- plot +
+      theme(
+        text = element_text(size = 20),
+        axis.text.x = element_text(angle = 45, hjust = 1)
+      ) + ylab("Cumulative incidence") + xlab("Threshold")
+    plot <- plot + ggtitle("Title") + labs(subtitle = "Subtitle") +   theme(plot.title = element_text(size = 25), axis.text.x = element_text(angle = 0, hjust = 1, size = 18), axis.text.y = element_text(angle = 0, hjust = 1, size = 18))
+    
+    plot
+ 
+
+ 
+```
