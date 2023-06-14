@@ -1,14 +1,22 @@
 
 
 tmleThreshold.auto <- function(thresholds, W , A , Y,  Delta = rep(1, length(A)), weights = rep(1, length(A)), sl3_Learner = NULL) {
-  library(data.table)
-  library(sl3)
-  library(hal9001)
+  require(data.table)
+  require(sl3)
+  require(earth)
+  require(mgcv)
+  require(ranger)
+  lrnr_glm <-  Lrnr_glmnet$new()
+  if(ncol(as.matrix(W) == 1)) {
+    lrnr_glm <-  Lrnr_glm$new()
+    }
   if(is.null(sl3_Learner)) {
     lrnr_stack <- Stack$new(list(
+      Lrnr_mean$new(),
       Lrnr_gam$new(),
-      Lrnr_earth$new(),
-      Lrnr_glmnet$new(),
+      Lrnr_earth$new(degree = 1),
+      Lrnr_earth$new(degree = 2),
+     lrnr_glm,
       Lrnr_ranger$new()
     ))
     sl3_Learner <- make_learner(Pipeline, Lrnr_cv$new(lrnr_stack), Lrnr_cv_selector$new(loss_squared_error))
@@ -27,7 +35,11 @@ tmleThreshold.auto <- function(thresholds, W , A , Y,  Delta = rep(1, length(A))
     task_Gv <-  sl3_Task$new(data, covariates =  c(colnames(W), "Av"), outcome = "Delta", weights = "weights")
     lrnr_Qv <- sl3_Learner$train(task_Qv[Delta == 1 & Av ==1])
     lrnr_gv <- sl3_Learner$train(task_gv)
-    lrnr_Gv <- sl3_Learner$train(task_Gv)
+    if(all(Delta==1)) {
+      lrnr_Gv <- Lrnr_mean$new()$train(task_Gv)
+    } else {
+       lrnr_Gv <- sl3_Learner$train(task_Gv)
+      }
     Qv <- lrnr_Qv$predict(task_Qv)
     gv <- lrnr_gv$predict(task_gv)
     Gv <- lrnr_Gv$predict(task_Gv)
