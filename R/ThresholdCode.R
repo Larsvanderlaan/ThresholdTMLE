@@ -129,7 +129,7 @@ truncate_pscore_adaptive <- function(A, pi, min_trunc_level = 1e-8) {
     alpha1 <- 1/pi
     mean(alpha^2 - 2*(alpha1))
   }
-  cutoff <- optim(cutoff, fn = risk_function, method = "Brent", lower = min_trunc_level, upper = 0.5, level = 1)$par
+  cutoff <- optim(1e-3, fn = risk_function, method = "Brent", lower = min_trunc_level, upper = 0.5, level = 1)$par
 
   pi <- pmax(pi, cutoff)
   return(pi)
