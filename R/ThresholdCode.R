@@ -1,4 +1,6 @@
 
+sl3_Learner <- Lrnr_gam$new()
+
 
 tmleThreshold.auto <- function(thresholds, W , A , Y,  Delta = rep(1, length(A)), weights = rep(1, length(A)), sl3_Learner = NULL) {
   require(data.table)
@@ -104,6 +106,8 @@ tmle.efficient <- function(threshold, A, Delta, Y,
                                gv, Qv, Gv,
                                weights = rep(1, length(A))) {
     n <- length(A)
+    gv <- truncate_pscore_adaptive(A, gv)
+    Gv <- truncate_pscore_adaptive(Delta, Gv)
     Av <- as.numeric(A >= threshold)
     eps <- coef(glm.fit(as.matrix(rep(1,n)), Y,
                         offset = qlogis(Qv), weights = weights * Delta*Av/(gv*Gv),
@@ -114,3 +118,21 @@ tmle.efficient <- function(threshold, A, Delta, Y,
     EIF <- weights * EIF
     return(list(psi = psi, EIF = EIF))
   }
+
+
+
+truncate_pscore_adaptive <- function(A, pi, min_trunc_level = 1e-8) {
+  risk_function <- function(cutoff, level) {
+     pi <- pmax(pi, cutoff)
+     
+    alpha <- A/pi #Riesz-representor
+    alpha1 <- 1/pi
+    mean(alpha^2 - 2*(alpha1))
+  }
+  cutoff <- optim(cutoff, fn = risk_function, method = "Brent", lower = min_trunc_level, upper = 0.5, level = 1)$par
+
+  pi <- pmax(pi, cutoff)
+  return(pi)
+}
+
+
